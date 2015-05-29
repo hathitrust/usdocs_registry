@@ -1,0 +1,7 @@
+<% if query_has_constraints? and 1 == 2%>
+
+      <div id="appliedParams" class="clearfix constraints-container">
+        <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>
+        <%= render_constraints(params) %>
+      </div>
+<% end %>

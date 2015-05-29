@@ -1,0 +1,31 @@
+
+.search-tabs label { width:36rem; }
+
+.result { padding-left:1em; }
+
+.title .enum_chron { float:right; margin-left:2em; }
+
+ul.pagination, ul.pagination li  { display:inline; list-style-type:none; }
+
+.options { border-bottom: 1px solid #aaaaaa; }
+.options div { display:inline; }
+.options .page_links { float:right; }
+
+/* record count thing can get too close to per_page selection */
+.page_entries { padding-left: 2em; }
+
+.form-group { margin: 1em; } /* fixes some layout issues in sms and email forms */
+
+#smsLink { padding-left: 1em; }
+
+#sidebar { display:table-cell; border-left: 1px solid #e1dfdf; padding-left: 1em; }
+
+.sidebar { padding-bottom: 1em; }
+
+#sidebar .panel { border-bottom: 1px solid #e1dfdf; margin-bottom: 1em; }
+
+.show-document #document { margin-right: 2em; }
+
+.panel {  padding-top: 1em; }
+
+.feedback_block { margin-left: 2em; }

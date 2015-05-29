@@ -1,0 +1,55 @@
+<div class="panel panel-default feedback-form">
+  <h3 class="panel-heading">
+    Feedback
+  </h3>
+  <form class="panel-body form-vertical">
+    <div class="control-group">
+      <label class="control-label" for="email">
+        Email Address <br>
+        <span class="label">Optional</span>
+      </label>
+      <div class="controls">
+        <input id="email" class="input-xlarge" type="text" placeholder="[Your email address]" name="email">
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="comments">Comments</label>
+      <div class="controls">
+        <textarea id="comments" class="input-xlarge" placeholder="Add your feedback here" required="required" name="comments" rows="5"></textarea>
+      </div>
+    </div>
+    <a class="btn btn-primary" id="feedback_submit" href="#">Submit</a>
+  </form>
+  <span id="feedback-success"></span>
+</div>
+
+<%- # put this elsewhere -%>
+<script type="text/javascript">
+  $('#feedback_submit').click( function(e) {
+    e.preventDefault();
+    /* do this first, so they don't keep hitting the submit button */
+    $('#feedback_submit').hide();
+    $('#feedback-success').html('Sending...');
+    $.ajax({
+      type: "POST",
+      url: '<%= root_path %>feedback', 
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data: {
+        current_url: window.location.href, 
+        comments: $('#comments').val(), 
+        email: $('#email').val()
+      },
+      success: function() {
+        $('#comments').val('');
+        $('#feedback-success').html('Your feedback has been received. Thank you.');
+        $('#feedback_submit').show();
+      }
+    });
+  });
+    
+</script>
+        
+
+
+
+

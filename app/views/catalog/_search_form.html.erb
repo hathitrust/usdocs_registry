@@ -1,0 +1,19 @@
+<%= form_tag search_action_url, :method => :get, :class => 'search-query-form clearfix navbar-form' do %>
+  <div class="search-tabs">
+    <label class="search-label-catalog" for="option-catalog-search">US Federal Government Documents Registry</label>
+  </div>
+
+  <%= render_hash_as_hidden_fields(params_for_search().except(:q, :search_field, :qt, :page, :utf8)) %>
+  <fieldset>
+    <%= text_field_tag :q, params[:q], :placeholder => t('blacklight.search.form.search.placeholder'), :class => "search-input-text", :id => "ql-input", :autofocus => should_autofocus_on_search_box? %>
+    <div class="search-input-options" style="display:block;">
+      <label class="offscreen" for="search-input-select">Search Field List</label>
+      <% unless search_fields.empty? %>
+        <%= select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => t('blacklight.search.form.search_field.title'), :class=>"search-input-select", :id=>"search-input-select", :size=>"1") %>
+      <% end %>
+    </div>
+    <button class="button">
+      <span class="offscreen">Search</span>
+    </button>
+  </fieldset>
+<% end %>

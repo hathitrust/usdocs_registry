@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HathiTrust Government Documents Registry</title>
+  <%= javascript_include_tag "//code.jquery.com/jquery-1.9.1.min.js" %>
+  <%= javascript_include_tag "//code.jquery.com/jquery-migrate-1.1.0.min.js" %>
+  <%= stylesheet_link_tag '//hathitrust.org/common/unicorn/css/common.css' %>
+  <%= stylesheet_link_tag '//babel.hathitrust.org/ls/css/screen.css' %>
+  <%= stylesheet_link_tag '//babel.hathitrust.org/ls/css/ls.css' %>
+  <%= favicon_link_tag 'favicon.ico' %>
+  <%= stylesheet_link_tag '//catalog.hathitrust.org/static/unicorn/css/hathi.css' %>
+
+  <script language="JavaScript" type="text/javascript">
+    path = 'http://catalog.hathitrust.org';
+    var jq = $;
+  </script>
+
+  <%= javascript_include_tag "//catalog.hathitrust.org/js/ht-layout.js" %>
+  
+  <%= stylesheet_link_tag 'gdr_edits.css' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render :partial => 'shared/header_navbar' %>
+  <div id="doc3" class="yui-t8">
+    <h2 class="SkipLink">Main Content</h2>
+    <div id="contentContainer" class="container page centered">
+      <%= yield %>
+    </div>
+  </div>
+</body>
+</html>

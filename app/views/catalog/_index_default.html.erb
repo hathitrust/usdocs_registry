@@ -1,0 +1,14 @@
+<%# partial to display solr document fields in catalog index view -%>
+
+<div class="resultItemLine2 results_author">
+  by
+  <%= render_index_field_value document, field: 'author_display' %>
+</div>
+<div class="resultItemLine3 results_published">
+  Published
+  <%= render_index_field_value document, field: 'pub_date' %>
+</div>
+<div class="AccessLink">
+  <%= link_to_document document, :label=>'Registry Record', :class=>'cataloglinkhref' %>
+  <% #link to hathi trust here -%> 
+</div> 

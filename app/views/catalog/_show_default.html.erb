@@ -1,0 +1,13 @@
+<%# default partial to display solr document fields in catalog show view -%>
+<table class="citation" style="margin: 0px; margin-top: 2em; padding: 0px; *width=auto" summary="This table displays bibliographic information about this specific item">
+  <tbody>
+  <% document_show_fields(document).each do |field_name, field| -%>
+    <% if should_render_show_field? document, field %>
+      <tr valign="top">
+        <th class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></th>
+        <td class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_value document, field: field_name %></td>
+      </tr>
+    <% end -%>
+  <% end -%>
+  </tbody>
+</table>
