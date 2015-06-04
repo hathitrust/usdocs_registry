@@ -13,6 +13,7 @@
 
 <%- if @response.empty? %>
   <%= render "zero_results" %>
+  <%= render :partial => 'feedback_form' %>
 <%- elsif render_grouped_response? %>
   <%= render_grouped_document_index %>
 <%- else %>

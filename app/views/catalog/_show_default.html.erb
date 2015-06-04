@@ -5,9 +5,25 @@
     <% if should_render_show_field? document, field %>
       <tr valign="top">
         <th class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></th>
-        <td class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_value document, field: field_name %></td>
+        <td class="blacklight-<%= field_name.parameterize %>">
+          <% if field_name == 'oclcnum_t' %>
+            <%= link_to document[field_name], search_action_url(q: document[field_name], search_field: 'oclcnum_t') %>
+          <% elsif field_name == 'relationships' %>
+            <% document[field_name].each do |rel_uuid| %>
+              <%= link_to "Related", search_action_url(q: document[field_name][0], search_field: 'relationships') %>
+            <% end %>
+          <% elsif field_name == 'ht_ids' %>
+            <% document[field_name].each do |ht_id| %>
+              <div class="fulltext"><%= link_to "HathiTrust Full View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></div>
+            <% end %>
+          <% else %>
+            <%= render_document_show_field_value document, field: field_name %>
+          <% end -%>
+        </td>
       </tr>
     <% end -%>
   <% end -%>
   </tbody>
 </table>
+
+<%= render "marc_view" %>

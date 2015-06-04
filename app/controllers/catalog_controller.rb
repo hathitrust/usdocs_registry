@@ -12,10 +12,10 @@ class CatalogController < ApplicationController
     }
     
     # solr path which will be added to solr base url before the other solr params.
-    config.solr_path = 'select' 
+    #config.solr_path = 'select' 
     
     # items to show per page, each number in the array represent another option to choose from.
-    config.per_page = [10,20,50,100]
+    #config.per_page = [10,20,50,100]
 
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SearchHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
@@ -58,7 +58,6 @@ class CatalogController < ApplicationController
     config.add_facet_field 'format', :label => 'Format'
     config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true
     config.add_facet_field 'subject_topic_facet', :label => 'Subject'#, :limit => 20 
-    config.add_facet_field 'author_display_facet', :label => 'Author'
     #config.add_facet_field 'language_facet', :label => 'Language'#, :limit => true 
     #config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
     #config.add_facet_field 'subject_geo_facet', :label => 'Region' 
@@ -88,6 +87,7 @@ class CatalogController < ApplicationController
     #config.add_index_field 'format', :label => 'Format'
     #config.add_index_field 'language_facet', :label => 'Language'
     config.add_index_field 'pub_date', :label => 'Published'
+    config.add_index_field 'oclcnum_t', :label => 'oclcnum_t'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
 
@@ -95,7 +95,6 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display 
     config.add_show_field 'title_display', :label => 'Title'
     config.add_show_field 'title_vern_display', :label => 'Title'
-    config.add_show_field 'enumchron_display', :label => 'Enumeration/Chronology'
     config.add_show_field 'subtitle_display', :label => 'Subtitle'
     config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
     config.add_show_field 'author_display', :label => 'Author'
@@ -104,10 +103,18 @@ class CatalogController < ApplicationController
     config.add_show_field 'url_fulltext_display', :label => 'URL'
     config.add_show_field 'url_suppl_display', :label => 'More Information'
     config.add_show_field 'language_facet', :label => 'Language'
+    config.add_show_field 'publisher_t', :label => 'Publisher'
     config.add_show_field 'published_display', :label => 'Published'
+    config.add_show_field 'pub_date', :label => 'Published'
     config.add_show_field 'published_vern_display', :label => 'Published'
-    config.add_show_field 'lc_callnum_display', :label => 'Call number'
+    config.add_show_field 'sudoc_display', :label => 'SuDoc Call Number'
+    config.add_show_field 'lc_callnum_display', :label => 'LC Call Number'
     config.add_show_field 'isbn_t', :label => 'ISBN'
+    config.add_show_field 'oclcnum_t', :label => 'OCLC #'
+    config.add_show_field 'enumchron_display', :label => 'Enumeration/Chronology'
+    config.add_show_field 'title_series_t', :label => 'Series Title' 
+    config.add_show_field 'ht_ids', :label => 'Viewable'
+    config.add_show_field 'relationships', :label => 'Related Items'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -155,18 +162,26 @@ class CatalogController < ApplicationController
         :pf => '$author_pf'
       }
     end
-    
+   
+    config.add_search_field('sudoc') do |field|
+      field.solr_local_parameters = {
+        :qf => '$sudoc_qf',
+        :pf => '$sudoc_pf'
+      }
+    end
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as 
     # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
-    config.add_search_field('subject') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
-      field.qt = 'search'
-      field.solr_local_parameters = { 
-        :qf => '$subject_qf',
-        :pf => '$subject_pf'
-      }
-    end
+    #config.add_search_field('subject') do |field|
+    #  field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
+    #  field.qt = 'search'
+    #  field.solr_local_parameters = { 
+    #    :qf => '$subject_qf',
+    #    :pf => '$subject_pf'
+    #  }
+    #end
+
+    config.add_search_field 'oclcnum_t', :label => 'OCLC #'
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
