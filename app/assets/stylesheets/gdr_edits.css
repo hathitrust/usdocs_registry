@@ -3,8 +3,8 @@
 
 .result { padding-left:1em; }
 
-.title .enum_chron { float:right; margin-left:2em; }
-.enum_chron { margin-left:4em; }
+#index_header { font-weight: 150%; font-size: 125%; } 
+.enum_chron { float:right; margin-left:2em; font-size:1.15em; }
 
 ul.pagination, ul.pagination li  { display:inline; list-style-type:none; }
 
