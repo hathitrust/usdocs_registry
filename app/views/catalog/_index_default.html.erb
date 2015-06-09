@@ -1,9 +1,4 @@
 <%# partial to display solr document fields in catalog index view -%>
-<% if document['subtitle_display'] -%>
-  <div class="resultItemSubTitle results_subtitle">
-    <%= render_index_field_value document, field: 'subtitle_display' %>
-  </div>
-<% end %>
 <div class="resultItemLine2 results_author">
   <%= render_index_field_value document, field: 'author_display', label: 'by ' %>
 </div>
