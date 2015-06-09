@@ -31,6 +31,9 @@ class ApplicationController < ActionController::Base
                  "labels"=> ["feddocs"],
                  "summary"=> "[FedDoc Registry] Feedback form",
                  "description"=> params.map{|k,v| "#{k}: #{v}"}.join("\r\n"),
+                 "assignee"=> {
+                    "name"=> "valglenn@umich.edu"
+                 },
                  "issuetype"=> {
                     "name"=> "Website"
                  }
