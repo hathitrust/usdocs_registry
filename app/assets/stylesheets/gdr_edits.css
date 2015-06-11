@@ -42,3 +42,6 @@ ul.pagination, ul.pagination li  { display:inline; list-style-type:none; }
 #marc_view .ind1, #marc_view .ind2 { display: inline; padding: 0 5px; }
 #marc_view .subfields { padding-left: 5em; }
 #marc_view .tag_ind { float: left; }
+
+/* tool views */
+.tool_view { display:none; margin-top:2em; text-align: left; }

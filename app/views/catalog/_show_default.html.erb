@@ -27,3 +27,9 @@
 </table>
 
 <%= render "marc_view" %>
+<%# these screwed up these tool templates %>
+<% @documents = [@document] %> 
+<div id="citation_view" class="tool_view"><%= render :partial => 'citation' %></div>
+<div id="email_view" class="tool_view"><%= render :template => 'catalog/email' %></div>
+<div id="sms_view" class="tool_view"><%= render :template => 'catalog/sms' %></div>
+
