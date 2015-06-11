@@ -1,6 +1,6 @@
-#\ -s puma -p 30499
 # This file is used by Rack-based servers to start the application.
-
+require 'bundler'
+Bundler.require(:default)
 require ::File.expand_path('../config/environment', __FILE__)
 
 
