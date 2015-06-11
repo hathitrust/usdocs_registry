@@ -1,0 +1,8 @@
+<% # container for all documents in index list view -%>
+<div id="documents" class="documents-<%= document_index_view_type %>">
+  <div id="index_header" class="result">
+    <div class="title">Title</div>
+    <div class="enum_chron">Enumeration / Chronology</div>
+  </div>
+  <%= render documents, :as => :document %>
+</div>
