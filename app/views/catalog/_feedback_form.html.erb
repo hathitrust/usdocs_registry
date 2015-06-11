@@ -23,33 +23,3 @@
   <span id="feedback-success"></span>
 </div>
 
-<%- # put this elsewhere -%>
-<script type="text/javascript">
-  $('#feedback_submit').click( function(e) {
-    e.preventDefault();
-    /* do this first, so they don't keep hitting the submit button */
-    $('#feedback_submit').hide();
-    $('#feedback-success').html('Sending...');
-    $.ajax({
-      type: "POST",
-      url: '<%= root_path %>feedback', 
-      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-      data: {
-        current_url: window.location.href, 
-        comments: $('#comments').val(), 
-        email: $('#email').val()
-      },
-      success: function() {
-        $('#comments').val('');
-        $('#feedback-success').html('Your feedback has been received. Thank you.');
-        $('#feedback_submit').show();
-      }
-    });
-  });
-    
-</script>
-        
-
-
-
-

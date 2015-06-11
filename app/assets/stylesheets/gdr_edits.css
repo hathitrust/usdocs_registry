@@ -34,14 +34,14 @@ ul.pagination, ul.pagination li  { display:inline; list-style-type:none; }
 #ht_id_listing { list-style: none; }
 
 
-
-/* librarian view edits */
-#marc_view { display:none; margin-top:2em; text-align: left; }
-#marc_view .tag {background-image: none; }
-#marc_view .field { border-bottom: 1px solid #777777; clear: both; }
-#marc_view .ind1, #marc_view .ind2 { display: inline; padding: 0 5px; }
-#marc_view .subfields { padding-left: 5em; }
-#marc_view .tag_ind { float: left; }
-
 /* tool views */
-.tool_view { display:none; margin-top:2em; text-align: left; }
+.tool_view { display:none; margin-top:2em; text-align: left; border-top: 1px solid #777777; }
+
+/* MARC is ugly but we'll try */
+#librarian_view .tag {background-image: none; }
+#librarian_view .field { border-bottom: 1px solid #777777; clear: both; }
+#librarian_view .ind1, #librarian_view .ind2 { display: inline; padding: 0 5px; }
+#librarian_view .subfields { padding-left: 5em; }
+#librarian_view .tag_ind { float: left; }
+
+
