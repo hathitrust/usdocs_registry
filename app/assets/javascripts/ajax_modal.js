@@ -20,15 +20,16 @@ $(document).ready(function(){
   /* simplified modalAjaxFormSubmit */
   $('.ajax_form').submit(function(e){
     e.preventDefault();
+    var our_form = this
     $(this).siblings('.ajax-form-success').html('Sending...');
+    console.log($(this).attr('action'));
     $.ajax({
       url: $(this).attr('action'),
       data: $(this).serialize(),
       type: $(this).attr('method'), 
       dataType: 'script',
-      success: function() { 
-        console.log('this happened');
-        $(this).siblings('.ajax-form-success').html('Your message has been sent.');
+      complete: function() { 
+        $(our_form).siblings('.ajax-form-success').html('Your message has been sent.');
       }
     });
   });
