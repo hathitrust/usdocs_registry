@@ -43,7 +43,7 @@ $(document).ready(function(){
     $('#feedback-success').html('Sending...');
     $.ajax({
       type: "POST",
-      url: '<%= root_path %>feedback', 
+      url: 'feedback', 
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: {
         current_url: window.location.href, 
