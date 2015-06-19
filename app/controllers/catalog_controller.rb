@@ -56,8 +56,35 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     config.add_facet_field 'format', :label => 'Format'
-    config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true
-    config.add_facet_field 'subject_topic_facet', :label => 'Subject'#, :limit => 20 
+    #not the smartest way of doing this, but shouldn't have to touch it again anyway
+    config.add_facet_field 'pub_decade', :label => 'Publication Date', :query => {
+      :dec_1790s => { :label => '1789 - 1799', :fq => "pub_date:[1789 TO 1799]" },
+      :dec_1800s => { :label => '1800 - 1809', :fq => "pub_date:[1800 TO 1809]" },
+      :dec_1810s => { :label => '1810 - 1819', :fq => "pub_date:[1810 TO 1819]" },
+      :dec_1820s => { :label => '1820 - 1829', :fq => "pub_date:[1820 TO 1829]" },
+      :dec_1830s => { :label => '1830 - 1839', :fq => "pub_date:[1830 TO 1839]" },
+      :dec_1840s => { :label => '1840 - 1849', :fq => "pub_date:[1840 TO 1849]" },
+      :dec_1850s => { :label => '1850 - 1859', :fq => "pub_date:[1850 TO 1859]" },
+      :dec_1860s => { :label => '1860 - 1869', :fq => "pub_date:[1860 TO 1869]" },
+      :dec_1870s => { :label => '1870 - 1879', :fq => "pub_date:[1870 TO 1879]" },
+      :dec_1880s => { :label => '1880 - 1889', :fq => "pub_date:[1880 TO 1889]" },
+      :dec_1890s => { :label => '1890 - 1899', :fq => "pub_date:[1890 TO 1899]" },
+      :dec_1900s => { :label => '1900 - 1909', :fq => "pub_date:[1900 TO 1909]" },
+      :dec_1910s => { :label => '1910 - 1919', :fq => "pub_date:[1910 TO 1919]" },
+      :dec_1920s => { :label => '1920 - 1929', :fq => "pub_date:[1920 TO 1929]" },
+      :dec_1930s => { :label => '1930 - 1939', :fq => "pub_date:[1930 TO 1939]" },
+      :dec_1940s => { :label => '1940 - 1949', :fq => "pub_date:[1940 TO 1949]" },
+      :dec_1950s => { :label => '1950 - 1959', :fq => "pub_date:[1950 TO 1959]" },
+      :dec_1960s => { :label => '1960 - 1969', :fq => "pub_date:[1960 TO 1969]" },
+      :dec_1970s => { :label => '1970 - 1979', :fq => "pub_date:[1970 TO 1979]" },
+      :dec_1980s => { :label => '1980 - 1989', :fq => "pub_date:[1980 TO 1989]" },
+      :dec_1990s => { :label => '1990 - 1999', :fq => "pub_date:[1990 TO 1999]" },
+      :dec_2000s => { :label => '2000 - 2009', :fq => "pub_date:[2000 TO 2009]" },
+      :dec_2010s => { :label => "2010 - #{Time.now.year}", :fq => "pub_date:[2010 TO *]" }
+    }, :limit => 50
+    config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true, :limit => 12, sort: 'index' 
+    config.add_facet_field 'author_display', :label => 'Author', :limit => 50
+    config.add_facet_field 'subject_topic_facet', :label => 'Subject', :limit => 50 
     #config.add_facet_field 'language_facet', :label => 'Language'#, :limit => true 
     #config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
     #config.add_facet_field 'subject_geo_facet', :label => 'Region' 
@@ -65,6 +92,7 @@ class CatalogController < ApplicationController
 
     #config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
+   
     #config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
     #   :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
     #   :years_10 => { :label => 'within 10 Years', :fq => "pub_date:[#{Time.now.year - 10 } TO *]" },

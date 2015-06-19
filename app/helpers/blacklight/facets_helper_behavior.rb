@@ -59,7 +59,7 @@ module Blacklight::FacetsHelperBehavior
     safe_join(paginator.items.
       map { |item| render_facet_item(facet_field, item) }.compact.
       each_with_index.map do |item, num| 
-        show_hide = if num > 10 then 'hidefacet' else 'showfacet' end
+        show_hide = if num > 4 then 'hidefacet' else 'showfacet' end
         content_tag(wrapping_element,item,class:[show_hide,facet_field])
       end
     )
