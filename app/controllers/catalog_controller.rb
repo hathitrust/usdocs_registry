@@ -117,6 +117,7 @@ class CatalogController < ApplicationController
     #config.add_index_field 'language_facet', :label => 'Language'
     config.add_index_field 'pub_date', :label => 'Published'
     config.add_index_field 'oclcnum_t', :label => 'oclcnum_t'
+    config.add_index_field 'ht_ids', :label => 'Viewable'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
 

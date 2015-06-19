@@ -7,6 +7,10 @@
 </div>
 <div class="AccessLink">
   <%= link_to_document document, :label=>'Registry Record', :class=>'cataloglinkhref' %>
-  <% #link to hathi trust here -%> 
+  <% if document.has_key? 'ht_ids' %>
+    <% document[:ht_ids].each do |ht_id| %>
+      <span class="ht_index_link fulltext"><%= link_to "HathiTrust Full View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></span>
+    <% end %>
+  <% end %>
 </div> 
 
