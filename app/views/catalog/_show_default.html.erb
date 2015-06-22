@@ -10,7 +10,7 @@
             <%= link_to document[field_name], "https://www.worldcat.org/oclc/#{document[field_name]}", target:"_blank" %>
           <% elsif field_name == 'relationships' %>
             <% document[field_name].each do |rel_uuid| %>
-              <%= link_to "Related", search_action_url(q: document[field_name][0], search_field: 'relationships') %>
+              <%= link_to "Related", search_action_path(add_facet_params_and_redirect('relationships', rel_uuid)) %>
             <% end %>
           <% elsif field_name == 'ht_ids' %>
             <% document[field_name].each do |ht_id| %>
