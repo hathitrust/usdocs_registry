@@ -13,7 +13,7 @@
               <%= link_to "Related", search_action_path(add_facet_params_and_redirect('relationships', rel_uuid)) %>
             <% end %>
           <% elsif field_name == 'ht_ids' %>
-            <% document[field_name].each do |ht_id| %>
+            <% document[field_name].uniq.each do |ht_id| %>
               <div class="fulltext"><%= link_to "HathiTrust Full View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></div>
             <% end %>
           <% else %>
