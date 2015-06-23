@@ -48,3 +48,6 @@ ul.pagination, ul.pagination li  { display:inline; list-style-type:none; }
 .pub_date, .facet_pub_date, .morefacets_pub_date { display:none; }
 
 dd.pub_date { margin-left:50px; }
+
+/* hide the next button in pagination if given 'disabled' */
+.pagination > .disabled { display:none; }
