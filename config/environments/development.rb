@@ -22,10 +22,19 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-  # Debug mode disables concatenation and preprocessing of assets.
+  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
+  # Compress JavaScripts and CSS.
+  config.assets.js_compressor = :uglifier
+  # config.assets.css_compressor = :sass
+
+  # Do fallback to assets pipeline if a precompiled asset is missed.
+  config.assets.compile = true
+
+ # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
-  config.assets.debug = true
+  #config.assets.debug = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -35,6 +44,10 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
+
+  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # the initializer seems a little broken in production, trying this --jstever
+  config.assets.precompile = ['*.js', '*.css'] 
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
