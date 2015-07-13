@@ -55,6 +55,13 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
+    config.add_facet_field 'ht_ids', :label => 'HathiTrust Catalog', :query => {
+      :ht_full_view => { :label => 'Full View', :fq => "ht_availability:\"full view\"" },
+      :ht_limited_view => { :label => 'Limited', :fq => "ht_availability:\"limited view\"" }
+      #:ht_full_view => { :label => 'Full View', :fq => "ht_ids_fv:[* TO *]" },
+      #:ht_limited_view => { :label => 'Limited', :fq => "ht_ids_lv:[* TO *]" }
+    }
+      
     config.add_facet_field 'format', :label => 'Format'
     #not the smartest way of doing this, but shouldn't have to touch it again anyway
     config.add_facet_field 'pub_decade', :label => 'Publication Date', :query => {
@@ -193,13 +200,14 @@ class CatalogController < ApplicationController
         :pf => '$author_pf'
       }
     end
-   
-    config.add_search_field('sudoc') do |field|
-      field.solr_local_parameters = {
-        :qf => '$sudoc_qf',
-        :pf => '$sudoc_pf'
-      }
-    end
+  
+    config.add_search_field 'sudoc_display', :label => 'SuDoc #' 
+    #config.add_search_field('sudoc') do |field|
+      #field.solr_local_parameters = {
+      #  :qf => '$sudoc_qf',
+      #  :pf => '$sudoc_pf'
+      #}
+    #end
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as 
     # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
