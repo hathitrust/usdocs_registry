@@ -138,7 +138,7 @@ module Blacklight::FacetsHelperBehavior
   def render_selected_facet_value(facet_field, item)
     content_tag(:span, :class => "facet-label") do
       # remove link
-      link_to(image_tag('http://catalog.hathitrust.org/images/silk/cancel.png', :alt=>"Delete "+facet_field+" facet", :class => "facetbutton"), search_action_path(remove_facet_params(facet_field, item, params)), :class=>"remove") +
+      link_to(image_tag('cancel.png', :alt=>"Delete "+facet_field+" facet", :class => "facetbutton"), search_action_path(remove_facet_params(facet_field, item, params)), :class=>"remove") +
       content_tag(:span, facet_display_value(facet_field, item), :class => "selected")
     end + render_facet_count(item.hits, :classes => ["selected"])
   end
