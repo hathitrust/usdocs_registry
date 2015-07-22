@@ -7,10 +7,16 @@
 </div>
 <div class="AccessLink">
   <%= link_to_document document, :label=>'Registry Record', :class=>'cataloglinkhref' %>
-  <% if document.has_key? 'ht_ids' %>
-    <% document[:ht_ids].uniq.each do |ht_id| %>
+  <% if document["ht_availability"] == 'full view' %>
+    <% document[:ht_ids_fv].uniq.each do |ht_id| %>
       <span class="ht_index_link fulltext"><%= link_to "HathiTrust Full View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></span>
     <% end %>
   <% end %>
+  <% if document.has_key? 'ht_ids_lv' %>
+    <% document['ht_ids_lv'].uniq.each do |ht_id| %>
+      <span class="ht_index_link fulltext"><%= link_to "HathiTrust Limited View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></span>
+    <% end %>
+  <% end %>
+
 </div> 
 

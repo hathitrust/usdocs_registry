@@ -151,7 +151,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'oclcnum_t', :label => 'OCLC #'
     config.add_show_field 'enumchron_display', :label => 'Enumeration/Chronology'
     config.add_show_field 'title_series_t', :label => 'Series Title' 
-    config.add_show_field 'ht_ids', :label => 'Viewable'
+    config.add_show_field 'ht_ids_fv', :label => 'Viewable'
+    config.add_show_field 'ht_ids_lv', :label => 'Viewable'
     config.add_show_field 'relationships', :label => 'Related Items'
 
     # "fielded" search configuration. Used by pulldown among other places.
@@ -200,7 +201,7 @@ class CatalogController < ApplicationController
         :pf => '$author_pf'
       }
     end
-  
+
     config.add_search_field 'sudoc_display', :label => 'SuDoc #' 
     #config.add_search_field('sudoc') do |field|
       #field.solr_local_parameters = {

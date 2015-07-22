@@ -12,9 +12,13 @@
             <% document[field_name].each do |rel_uuid| %>
               <%= link_to "Related", search_action_path(add_facet_params_and_redirect('relationships', rel_uuid)) %>
             <% end %>
-          <% elsif field_name == 'ht_ids' %>
+          <% elsif field_name == 'ht_ids_fv' %>
             <% document[field_name].uniq.each do |ht_id| %>
               <div class="fulltext"><%= link_to "HathiTrust Full View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></div>
+            <% end %>
+          <% elsif field_name == 'ht_ids_lv' %>
+            <% document[field_name].uniq.each do |ht_id| %>
+              <div class="fulltext"><%= link_to "HathiTrust Limited View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></div>
             <% end %>
           <% elsif field_name == 'publisher_t' %>
             <%= link_to document[field_name][0], search_action_url(q: document[field_name][0], search_field: field_name) %> 
