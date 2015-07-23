@@ -43,7 +43,7 @@ $(document).ready(function(){
     $('#feedback-success').html('Sending...');
     $.ajax({
       type: "POST",
-      url: 'http://www.hathitrust.org/usdocs_registry/feedback', /* todo: use the root_url instead */
+      url: 'https://www.hathitrust.org/usdocs_registry/feedback', /* todo: use the root_url instead */
       beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
       data: {
         current_url: window.location.href, 
