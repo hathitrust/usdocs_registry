@@ -1232,7 +1232,7 @@ table.datagrid tr.oddrow {
 
 /* line 1031, ../sass/hathi.scss */
 .sms {
-  background-image: url(http://catalog.hathitrust.org/images/silk/phone.png);
+  background-image: url(/usdocs_registry/assets/phone.png);
   background-repeat: no-repeat;
   background-position: left;
   padding: .5em;
