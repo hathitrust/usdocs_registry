@@ -7,7 +7,7 @@
         <th class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></th>
         <td class="blacklight-<%= field_name.parameterize %>">
           <% if field_name == 'oclcnum_t' %>
-            <%= link_to document[field_name], "https://www.worldcat.org/oclc/#{document[field_name]}", target:"_blank" %>
+            <%= link_to document[field_name].last, "https://www.worldcat.org/oclc/#{document[field_name].last}", target:"_blank" %>
           <% elsif field_name == 'relationships' %>
             <% document[field_name].each do |rel_uuid| %>
               <%= link_to "Related", search_action_path(add_facet_params_and_redirect('relationships', rel_uuid)) %>
