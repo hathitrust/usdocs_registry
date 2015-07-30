@@ -30,13 +30,11 @@
     <% end -%>
 
   <% end -%>
-  <% @document.to_marc.find_all{|f| '856' === f.tag && f.indicator1 === '4' && f.indicator2 === '0' }.each do | eresource | -%>
-    <% if eresource['u'] =~ /purl/ %>
-      <tr valign="top">
-        <th class="blacklight-eresource">Electronic Resource:</th>
-        <td class-"blacklight-eresource"><%= link_to eresource['u'], eresource['u'] %></td>
-      </tr>
-    <% end -%>
+  <% electronic_resources(document).each do | url, linktext | %>
+    <tr valign="top">
+      <th class="blacklight-eresource">Electronic Resource:</th>
+      <td class-"blacklight-eresource"><%= link_to linktext, url %></td>
+    </tr>
   <% end -%>
   </tbody>
 </table>
