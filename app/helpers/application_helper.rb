@@ -27,8 +27,10 @@ module ApplicationHelper
   def oclcnum_links document
     oclcnum_links = []
     base = 'https://www.worldcat.org/oclc/'
-    document['oclcnum_t'].each do | oclcnum_t |
-      oclcnum_links << [oclcnum_t, base+oclcnum_t.to_s]
+    if document['oclcnum_t']
+      document['oclcnum_t'].each do | oclcnum_t |
+        oclcnum_links << [oclcnum_t, base+oclcnum_t.to_s]
+      end
     end
     return oclcnum_links
   end
