@@ -44,6 +44,8 @@ ul.pagination, ul.pagination li  { display:inline; list-style-type:none; }
 #librarian_view .subfields { padding-left: 5em; }
 #librarian_view .tag_ind { float: left; }
 
+.source_rec { margin-bottom: 2em; }
+
 /* hide pub_date facet */
 .pub_date, .facet_pub_date, .morefacets_pub_date { display:none; }
 
