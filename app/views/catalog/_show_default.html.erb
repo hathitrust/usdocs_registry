@@ -23,7 +23,7 @@
           <% elsif field_name == 'publisher_t' %>
             <%= link_to document[field_name][0], search_action_url(q: document[field_name][0], search_field: field_name) %> 
 	  <% else %>
-            <%= render_document_show_field_value document, field: field_name %>
+            <%= render_document_show_field_value( document, field: field_name).gsub(/\./, ',').gsub(/,$/, '') %>
           <% end -%>
         </td>
       </tr>
