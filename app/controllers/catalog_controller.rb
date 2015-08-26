@@ -149,6 +149,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'lc_callnum_display', :label => 'LC Call Number'
     config.add_show_field 'isbn_t', :label => 'ISBN'
     config.add_show_field 'oclcnum_t', :label => 'OCLC #'
+    config.add_show_field 'material_type_display', :label => 'Physical Description'
     config.add_show_field 'enumchron_display', :label => 'Enumeration/Chronology'
     config.add_show_field 'title_series_t', :label => 'Series Title' 
     config.add_show_field 'ht_ids_fv', :label => 'Viewable'
