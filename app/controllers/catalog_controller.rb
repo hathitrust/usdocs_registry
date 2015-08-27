@@ -203,13 +203,12 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field 'sudoc_display', :label => 'SuDoc #' 
-    #config.add_search_field('sudoc') do |field|
-      #field.solr_local_parameters = {
-      #  :qf => '$sudoc_qf',
-      #  :pf => '$sudoc_pf'
-      #}
-    #end
+    config.add_search_field('sudoc', :label => 'SuDoc #' ) do |field|
+      field.solr_local_parameters = {
+        :qf => '$sudoc_qf',
+        :pf => '$sudoc_pf'
+      }
+    end
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as 
     # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
@@ -222,7 +221,20 @@ class CatalogController < ApplicationController
     #  }
     #end
 
-    config.add_search_field 'oclcnum_t', :label => 'OCLC #'
+    config.add_search_field( 'oclcnum', :label => 'OCLC #') do |field|
+      field.solr_local_parameters = {
+        :qf => '$oclcnum_qf',
+        :pf => '$oclcnum_pf'
+      }
+    end
+
+    config.add_search_field( 'publisher', :label => 'Publisher') do |field|
+      field.solr_local_parameters = {
+        :qf => '$publisher_qf',
+        :pf => '$publisher_pf'
+      }
+    end
+
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
