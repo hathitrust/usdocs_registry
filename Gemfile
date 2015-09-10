@@ -6,7 +6,9 @@ gem 'rails', '4.2.1'
 # Use jdbcsqlite3 as the database for Active Record
 #gem 'activerecord-jdbcsqlite3-adapter'
 #gem 'activerecord-mysql-adapter'
-gem 'mysql2'
+
+#0.4.0 and greater are broken
+gem 'mysql2', '>= 0.3.13', '< 0.4.0'  
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -55,3 +57,4 @@ gem 'puma'
 
 gem 'rsolr', '~> 1.0.6'
 gem 'blacklight-marc', '~> 5.0'
+
