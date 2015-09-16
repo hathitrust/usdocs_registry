@@ -14,6 +14,9 @@
 
   <div class="panel-body">
     <ul class="nav">
+      <li class="json_rec_">
+	<%= link_to('JSON', request.url + '.json', target: '_blank') %>
+      </li>
       <%= render_show_doc_actions @document do |config, inner| %>
         <li class="<%= config.key %>">
           <%= inner %>
