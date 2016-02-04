@@ -6,7 +6,7 @@
   <%= render_index_field_value document, field: 'pub_date', label: 'Published:' %>
 </div>
 <div class="AccessLink">
-  <%= link_to_document document, :label=>'Registry Record', :class=>'cataloglinkhref', :rel => 'nofollow' %>
+  <%= link_to_document document, 'Registry Record', :class=>'cataloglinkhref', :rel => 'nofollow' %>
   <% if document["ht_availability"] == 'full view' %>
     <% document[:ht_ids_fv].uniq.each do |ht_id| %>
       <span class="ht_index_link fulltext"><%= link_to "HathiTrust Full View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></span>
