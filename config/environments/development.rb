@@ -47,7 +47,7 @@ Rails.application.configure do
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
   # the initializer seems a little broken in production, trying this --jstever
-  config.assets.precompile = ['*.js', '*.css'] 
+  #config.assets.precompile = ['*.js', '*.css'] 
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
