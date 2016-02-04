@@ -40,7 +40,7 @@ GEM
     autoprefixer-rails (6.3.1)
       execjs
       json
-    blacklight (5.13.1)
+    blacklight (5.18.0)
       bootstrap-sass (~> 3.2)
       deprecation
       kaminari (>= 0.15)
@@ -174,7 +174,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (>= 5.3.0, <= 5.13.1)
+  blacklight (>= 5.3.0, < 6.0.0)
   blacklight-marc (~> 5.0)
   coffee-rails (~> 4.1.0)
   httpclient
