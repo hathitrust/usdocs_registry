@@ -1,20 +1,3 @@
- function SubmitFeedback(frm) {
-    jq.post('/static/feedback.php',
-            {'comment': jq("[name='comment']", frm).val(),
-             'uniqname': jq("[name='uniqname']", frm).val(),
-             'subject':  jq("[name='subject']", frm).val(),
-             'url': jq("[name='url']:checked", frm).val()
-            },
-            function(data) {
-              document.getElementById('popupbox').innerHTML = '<div style="padding: 4em;"><h3>Message Sent</h3><p>Thank you for your feedback!</p></div>';
-              setTimeout("hideLightbox();", 3000);
-              return false;
-            }
-
-          );
-    return false;
-  }
-
 String.prototype.trim = function() {
   return this.replace(/^\s+|\s+$/g,"");
 }
