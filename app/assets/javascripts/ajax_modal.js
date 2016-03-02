@@ -10,11 +10,12 @@ $(document).ready(function(){
   /* tool bar links to toggle divs in main document sect. */
   $('#emailLink, #smsLink, #citationLink, #librarian_viewLink').click(function(e){
     e.preventDefault();
+    $('.tool_view').hide();
     var name = $(this).attr('id').replace('Link','');
     if (!name.match(/view/)){ name = name+'_view'; }
     var link = $(this).attr('href');
     $('#'+name).toggle();
-    
+    location.href = '#'+name;
   });
 
   /* simplified modalAjaxFormSubmit */
