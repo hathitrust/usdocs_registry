@@ -46,7 +46,11 @@ ul.pagination, ul.pagination li  { display:inline; list-style-type:none; }
 #librarian_view .subfields { padding-left: 5em; }
 #librarian_view .tag_ind { float: left; }
 
-.source_rec { margin-bottom: 2em; }
+.source_rec {
+  margin-bottom: 2em; 
+  margin-top: 4.0rem;
+  line-height: 2.2rem;
+}
 
 /* hide pub_date facet */
 .pub_date, .facet_pub_date, .morefacets_pub_date { display:none; }
@@ -64,4 +68,40 @@ dd.pub_date { margin-left:50px; }
 
 .facets .facet-label {
   position: relative;
+}
+
+/* Change from hathi common.css */
+.container .sidebar .narrow {
+  font-size: 1.4rem;
+}
+
+#facetlist dt {
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+#facetlist dd { 
+  margin-bottom: 1.0rem;
+}
+
+.resultItemLine2, .resultItemLine3 {
+  font-size: 1.4rem;
+}
+
+.citation {
+  font-size: 100%;
+}
+
+.citation tr {
+  border-bottom: 1px solid #DDD;
+  line-height: 2.2rem;
+}
+
+.panel-heading {
+  font-weight: bold;
+}
+
+.panel-body {
+  line-height: 2.5rem;
+  font-size: 1.5rem;
 }
