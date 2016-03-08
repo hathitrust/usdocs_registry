@@ -4,7 +4,7 @@
   <% document_show_fields(document).each do |field_name, field| -%>
     <% if should_render_show_field? document, field %>
       <tr valign="top">
-        <th class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></th>
+        <th class="blacklight-<%= field_name.parameterize %>" scope="row"><%= render_document_show_field_label document, field: field_name %></th>
         <td class="blacklight-<%= field_name.parameterize %>">
           <% if field_name == 'oclcnum_t' %>
             <%= link_to document[field_name].last, "https://www.worldcat.org/oclc/#{document[field_name].last}", target:"_blank" %>
@@ -33,14 +33,14 @@
   <% if oclcnum_links(document).last %>
     <% oclcnum_links(document).last do | oclcnum, url | %>
       <tr valign="top">
-        <th class="blacklight-oclcnum_t">OCLC #</th>
+        <th class="blacklight-oclcnum_t" scope="row">OCLC #</th>
         <td class="blacklight-oclcnum_t"><%= link_to oclcnum, url, target:"_blank" %></td>
       </tr>
     <% end %>
   <% end %> 
   <% electronic_resources(document).each do | linktext, url | %>
     <tr valign="top">
-      <th class="blacklight-eresource">Electronic Resource:</th>
+      <th class="blacklight-eresource" scope="row">Electronic Resource:</th>
       <td class-"blacklight-eresource"><%= link_to linktext, url %></td>
     </tr>
   <% end -%>
