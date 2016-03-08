@@ -1,5 +1,22 @@
-
-.search-tabs label { width:36rem; }
+.search-tabs label { width:36rem;}
+.search-tabs h1 { 
+  width:36rem; 
+  padding: 0.5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: 0.1rem;
+  border: 2px solid #d2d2d1;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  color: #6d6d6d;
+  display:inline-block;
+  margin-bottom: -2px;
+  text-align: center;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  line-height: normal;
+}
 
 .result { padding-left:1em; }
 
