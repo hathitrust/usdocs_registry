@@ -121,3 +121,7 @@ dd.pub_date { margin-left:50px; }
   line-height: 2.5rem;
   font-size: 1.5rem;
 }
+
+.documents-list .result + .result {
+  border-top: 1px solid #BBB;
+}
