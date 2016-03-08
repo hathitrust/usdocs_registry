@@ -55,3 +55,13 @@ dd.pub_date { margin-left:50px; }
 
 /* hide the next button in pagination if given 'disabled' */
 .pagination > .disabled { display:none; }
+
+.facets .remove {
+  position: absolute;
+  right: 100%;
+  margin-right: 0.2rem;
+}
+
+.facets .facet-label {
+  position: relative;
+}
