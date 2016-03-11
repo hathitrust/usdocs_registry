@@ -7,13 +7,13 @@ $(document).on('page:load ready', function(){
     if( $(this).html().match(/more/) ) {
       $('.'+facet_name).show().css('visibility','visible');
       $(this).html(function(index, html){
-        return html.replace(/more/, '&lt;&lt;fewer').replace('&gt;&gt;', '');
+        return html.replace(/more/, '⬅ fewer').replace('➡', '');
       });
     }
     else{
       $('.'+facet_name+'.hidefacet').hide().css('visibility','hidden');
       $(this).html(function(index, html){
-        return html.replace(/&lt;&lt;fewer/, 'more').replace(/$/, '&gt;&gt;');
+        return html.replace(/⬅ fewer/, 'more').replace(/$/, '➡');
       });
     }
   });
