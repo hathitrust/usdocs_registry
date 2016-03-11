@@ -1,6 +1,19 @@
 en:
+  views:
+    pagination:
+      first: '&laquo; First'
+      last: 'Last &raquo;'
+      previous: '⬅ Previous'
+      next: 'Next ➡'
+      truncate: '…'
+
+    pagination_compact:
+      previous: '⬅ Previous'
+      next: 'Next ➡'
   blacklight:
     application_name: 'Blacklight'
 
     tools:
       librarian_view: 'MARC View'
+
+
