@@ -7,13 +7,13 @@ $(document).on('page:load ready', function(){
     if( $(this).html().match(/more/) ) {
       $('.'+facet_name).show().css('visibility','visible');
       $(this).html(function(index, html){
-        return html.replace(/more/, '⬅ fewer').replace('➡', '');
+        return html.replace(/more/, '⬆ fewer').replace('⬇', '');
       });
     }
     else{
       $('.'+facet_name+'.hidefacet').hide().css('visibility','hidden');
       $(this).html(function(index, html){
-        return html.replace(/⬅ fewer/, 'more').replace(/$/, '➡');
+        return html.replace(/⬆ fewer/, 'more').replace(/$/, '⬇');
       });
     }
   });
