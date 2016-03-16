@@ -151,3 +151,15 @@ dd.pub_date { margin-left:50px; }
 .navbar-inner { max-width: 120rem; min-width:70rem; }
 
 h1.title { font-size:3rem; font-weight:bold; color: #4f4f4f;}
+
+/* fix top prev_next styling */
+span.page_entries {
+  border-left: 2px solid #333333;
+  border-right: 2px solid #333333;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  margin-right: .5rem;
+  font-weight: normal;
+}
+
+#paging { width: auto; }
