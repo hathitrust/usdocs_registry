@@ -7,7 +7,7 @@
 </div>
 <div class="AccessLink">
   <%= link_to_document document, 'Registry Record', :class=>'cataloglinkhref', :rel => 'nofollow' %>
-  <% if document["ht_availability"] == 'full view' %>
+  <% if document["ht_availability"] == 'Full View' and document[:ht_ids_fv] %>
     <% document[:ht_ids_fv].uniq.each do |ht_id| %>
       <span class="ht_index_link fulltext"><%= link_to "HathiTrust Full View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></span>
     <% end %>

@@ -56,8 +56,9 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     config.add_facet_field 'ht_ids', :label => 'HathiTrust Catalog', :query => {
-      :ht_full_view => { :label => 'Full View', :fq => "ht_availability:\"full view\"" },
-      :ht_limited_view => { :label => 'Limited', :fq => "ht_availability:\"limited view\"" }
+      :ht_full_view => { :label => 'Full View', :fq => "ht_availability:\"Full View\"" },
+      :ht_limited_view => { :label => 'Limited', :fq => "ht_availability:\"Limited View\"" },
+      :ht_no_view => { :label => 'Not In HathiTrust', :fq => "ht_availability:\"Not In HathiTrust\"" }
       #:ht_full_view => { :label => 'Full View', :fq => "ht_ids_fv:[* TO *]" },
       #:ht_limited_view => { :label => 'Limited', :fq => "ht_ids_lv:[* TO *]" }
     }
