@@ -21,7 +21,7 @@
               <div class="fulltext"><%= link_to "HathiTrust Limited View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></div>
             <% end %>
           <% elsif field_name == 'author_display' || field_name == 'publisher_t' %>
-            <%= link_to document[field_name][0], search_action_url(q: document[field_name][0], search_field: field_name.split('_')[0]) %>
+            <%= link_to document[field_name][0].sub(/[;,:]$/, ''), search_action_url(q: document[field_name][0], search_field: field_name.split('_')[0]) %>
 	  <% else %>
             <%= render_document_show_field_value( document, field: field_name) %>
           <% end -%>
