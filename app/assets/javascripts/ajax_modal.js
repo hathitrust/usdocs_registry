@@ -21,6 +21,7 @@ $(document).ready(function(){
   /* simplified modalAjaxFormSubmit */
   $('.ajax_form').submit(function(e){
     e.preventDefault();
+    e.stopImmediatePropagation();
     var our_form = this
     $(this).siblings('.ajax-form-success').html('Sending...');
     console.log($(this).attr('action'));

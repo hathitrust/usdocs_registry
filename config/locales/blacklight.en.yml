@@ -16,4 +16,6 @@ en:
     tools:
       librarian_view: 'MARC View'
 
-
+    email:
+      text:
+        oclc: 'OCLC #: %{value}'
