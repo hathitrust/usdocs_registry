@@ -91,13 +91,21 @@ dd.pub_date { margin-left:50px; }
   font-size: 1.4rem;
 }
 
-#facetlist dt {
+#facetlist h4 {
   font-size: 1.5rem;
   margin-top: 2.5rem;
+  margin-left:0;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
 }
 
-#facetlist dd { 
-  margin-bottom: 1.0rem;
+#facetlist ul {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+#facetlist li { 
+  margin-bottom: 0.5rem;
 }
 
 .resultItemLine2, .resultItemLine3 {
@@ -182,4 +190,5 @@ span.page_entries {
 }
 
 #appliedParams a, #appliedParams span{ font-weight:normal; padding-top:.1rem; padding-bottom:.1rem; }
-	
+
+#facets ul { list-style-type: none; }	

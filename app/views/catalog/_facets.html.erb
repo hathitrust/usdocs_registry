@@ -1,14 +1,12 @@
 <% # main container for facets/limits menu -%>
 <% if has_facet_values?  %>
-<div id="facets" class="facets sidebar">
+<section id="facets" class="facets sidebar">
 
   <div class="narrow">
     <h3 class='narrowsearch'>Refine Results</h3>
     <div id="facetlist">
-      <dl>
-        <%= render_facet_partials %>
-      </dl>
+      <%= render_facet_partials %>
     </div>
   </div>
-</div>
+</section>
 <% end %>

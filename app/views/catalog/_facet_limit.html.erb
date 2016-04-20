@@ -1,4 +1,4 @@
-
+<ul>
 <% paginator = facet_paginator(facet_field, display_facet) %>
 <%= render_facet_limit_list paginator, field_name %>
 
@@ -6,7 +6,8 @@
   <%# oh well, just a long list of subjects anyway %>
 <% end %>
 <% if paginator.items.count > 5 %>
-  <dd>
+  <li>
     <a class="morefacets morefacets_<%=field_name%>" data-facet_name="<%=field_name%>" href="#">more <%=facet_field.label.downcase%>s ⬇</a> 
-  </dd>
+  </li>
 <% end %>
+</ul>

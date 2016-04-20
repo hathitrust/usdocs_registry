@@ -55,7 +55,7 @@ module Blacklight::FacetsHelperBehavior
   # Renders the list of values 
   # removes any elements where render_facet_item returns a nil value. This enables an application
   # to filter undesireable facet items so they don't appear in the UI
-  def render_facet_limit_list(paginator, facet_field, wrapping_element=:dd)
+  def render_facet_limit_list(paginator, facet_field, wrapping_element=:li)
     safe_join(paginator.items.
       map { |item| render_facet_item(facet_field, item) }.compact.
       each_with_index.map do |item, num| 
