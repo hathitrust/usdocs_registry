@@ -11,8 +11,8 @@
         <%= select_tag(:search_field, options_for_select(search_fields, h(params[:search_field])), :title => t('blacklight.search.form.search_field.title'), :class=>"search-input-select", :id=>"search-input-select", :size=>"1") %>
       <% end %>
     </div>
-    <button class="button">
-      <span class="offscreen">Search</span>
+    <button class="button search">
+      <span>Search</span>
     </button>
   </div>
 <% end %>

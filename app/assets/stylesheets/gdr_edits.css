@@ -149,7 +149,26 @@ dd.pub_date { margin-left:50px; }
   margin-top:0;
 }
 
-.search-form .search_fields button.button{position:absolute;top:-6px;right:-46px;bottom:0;display:inline-block;height:40px ;height:4rem ;width:40px ;width:4rem ;margin:0;padding:0;border-top-left-radius:0;border-bottom-left-radius:0;border:1px solid #545454;border-bottom-color:#3a3a3a;background:dimgrey url("https://www.hathitrust.org/common/unicorn/img/search.png") no-repeat 99% center;z-index:0}
+.search-form .search_fields button.button{
+  position:absolute;
+  top:-6px;
+  right:-46px;
+  bottom:0;
+  display:inline-block;
+  height:40px ;
+  height:4rem ;
+  width:12rem ;
+  margin:0;
+  padding:0;
+  padding-left:1.6rem;
+  text-align: left;
+  border-top-left-radius:0;
+  border-bottom-left-radius:0;
+  border:1px solid #545454;
+  border-bottom-color:#3a3a3a;
+  background:dimgrey url("https://www.hathitrust.org/common/unicorn/img/search.png") no-repeat 99% center;
+  z-index:0
+}
 
 .search-form .search_fields button.button:hover{background-color:#848383;border-color:#777676;border-bottom-color:#5d5d5d}
 
