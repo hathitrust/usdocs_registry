@@ -8,7 +8,7 @@
         <td class="blacklight-<%= field_name.parameterize %>">
           <% if field_name == 'oclcnum_t' %>
             <% document[field_name].each do |onum| %>
-              <%= link_to onum, "https://www.worldcat.org/oclc/#{document[field_name].last}", target:"_blank" %>
+              <%= link_to onum, "https://www.worldcat.org/oclc/#{onum}", target:"_blank" %>
             <% end %>
           <% elsif field_name == 'relationships' %>
             <% document[field_name].each do |rel_uuid| %>
