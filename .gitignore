@@ -8,6 +8,9 @@
 /config/database.yml
 /config/application.rb
 
+
+/start_test_server.sh
+
 # Ignore bundler config.
 /.bundle
 
