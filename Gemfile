@@ -48,7 +48,7 @@ gem 'blacklight', ">= 5.3.0", "< 6.0.0"
 gem 'nokogiri', '1.6.1'
 
 #creating jira issues
-gem 'jira-ruby', :require => 'jira'
+gem 'jira-ruby', "< 1.0.0", :require => 'jira'  # some bugs need fixing in 1.0.0
 
 gem 'httpclient'
 
