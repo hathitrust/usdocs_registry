@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   blacklight_for :catalog
 
   get 'about' => 'pages#about'
+
+  get 'collection_profile' => 'pages#collection_profile'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
