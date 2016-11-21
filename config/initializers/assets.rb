@@ -12,3 +12,4 @@ Rails.application.config.assets.version = '1.1'
 Rails.application.config.assets.precompile += %w( cancel.png )
 Rails.application.config.assets.precompile += %w( gdr_edits.css )
 Rails.application.config.assets.precompile += %w( hathi.css )
+Rails.application.config.assets.precompile += %w( cp/collection_profile.js )

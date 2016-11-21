@@ -21,14 +21,14 @@ function fillLightbox(id) {
   return false;
 }
 
-jq.fn.clearForm = function(exceptions) {
+$.fn.clearForm = function(exceptions) {
   return this.each(function() {
-    if (jq(this).hasClass('stickyform')) {
+    if ($(this).hasClass('stickyform')) {
       return;
     }
     var type = this.type, tag = this.tagName.toLowerCase();
     if (tag == 'form')
-      return jq(':input',this).clearForm();
+      return $(':input',this).clearForm();
     if (type == 'text' || type == 'password' || tag == 'textarea')
       this.value = '';
     else if (type == 'checkbox' || type == 'radio')
