@@ -12,12 +12,12 @@
 
 development:
   adapter: solr
-  url: "http://solr-sdr-usfeddocs-dev:9034/usfeddocs/collection1" 
+  url: "http://solr-sdr-usfeddocs-dev:9035/usfeddocs/collection1" 
 test: &test
   adapter: solr
   url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8888}/solr/blacklight-core" %>
 production:
   adapter: solr
-  url: "http://solr-sdr-usfeddocs:9034/usfeddocs/collection1" 
+  url: "http://solr-sdr-usfeddocs:9032/usfeddocs/collection1" 
 
 
