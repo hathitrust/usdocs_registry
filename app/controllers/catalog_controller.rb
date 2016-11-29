@@ -249,6 +249,7 @@ class CatalogController < ApplicationController
     config.add_sort_field 'pub_date_sort asc, title_sort asc', :label => 'year ascending'
     config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
     config.add_sort_field 'title_sort asc, pub_date_sort desc', :label => 'title'
+    config.add_sort_field 'enumchron_display desc', :label => 'enumeration / chronology'
 
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
