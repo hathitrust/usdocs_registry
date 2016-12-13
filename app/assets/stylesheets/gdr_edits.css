@@ -177,7 +177,7 @@ dd.pub_date { margin-left:50px; }
 #header { min-width:70rem; }
 .navbar-inner { max-width: 120rem; min-width:70rem; }
 
-h1.title { font-size:3rem; font-weight:bold; color: #4f4f4f;}
+h1.title { font-size:2.5rem; font-weight:bold; color: #4f4f4f;}
 
 /* fix top prev_next styling */
 span.page_entries {
