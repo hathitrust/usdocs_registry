@@ -94,7 +94,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'author_display', :label => 'Author', :limit => 50
     config.add_facet_field 'subject_topic_facet', :label => 'Subject', :limit => 50 
     config.add_facet_field 'sudoc_stem_facet', :label => 'SuDoc Stem', :limit => 70 
-    config.add_facet_field 'series', :label => 'Series', :limit => 10 
+    #config.add_facet_field 'series', :label => 'Series', :limit => 10 
     config.add_facet_field 'relationships', :show => false 
     #config.add_facet_field 'language_facet', :label => 'Language'#, :limit => true 
     #config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
