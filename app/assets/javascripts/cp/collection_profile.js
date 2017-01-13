@@ -57,8 +57,9 @@ function addSummaryData(){
   $('#num_digital_objects').html(summary['num_digital_objects'].toLocaleString());
   $('#num_monographs').html(summary['num_monographs'].toLocaleString());
   $('#num_serials').html(summary['num_serials'].toLocaleString());
+  $('.corpus_size').html(summary['corpus_size'].toLocaleString());
   $('#corpus_percent').html(summary['corpus_percent'].toFixed(2));
-  $('#num_unique_items').html(summary['num_unique_items'].toLocaleString());
+  $('.num_unique_items').html(summary['num_unique_items'].toLocaleString());
   $('#rpt_run_date').html(summary['rpt_run_date'].toLocaleString());
   $('.num_missing_language').html(summary['num_missing_language'].toLocaleString());
   $('.num_missing_pubdate').html(summary['num_missing_pubdate'].toLocaleString());
@@ -100,14 +101,14 @@ function addCharts(){
                  '# of duplicate objects',
                  '# of occurences',
                  5,
-                'monodupes_chart');*/
+                'monodupes_chart');
     drawBarChart('vertical',
                  'monodupes.tsv',
                  'Duplication of Monographs',
                  '# of Copies',
                  '# of Occurences',
                  4,
-                 'monodupes_chart');
+                 'monodupes_chart');*/
     //drawMonoDupesChart();
     drawBarChart('horizontal',
                  'sudocstems.tsv',
