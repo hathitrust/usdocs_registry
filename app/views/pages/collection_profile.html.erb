@@ -23,8 +23,11 @@
   <p>HathiTrust contains <span class="num_bib_records">412,205</span> bibliographic records for US Federal Documents including <span id="num_digital_objects">970,315</span> separate digital objects for <span class="num_unique_items"></span> unique items. <span id="num_monographs">387,766</span> of these bibliographic records represent monographs, and <span id="num_serials">23,985</span> represent serial titles.</p>
   <div id="contributors" class="report_section"><div class="chart" id="contrib_chart"></div></div>
   <div id="digitizing" class="report_section"><div class="chart" id="digitizing_chart"></div></div>
-  <div id="rights" class="report_section"><div class="report_text">HathiTrust's corpus of Federal documents contains eighteen (18) different copyrights determinations. Some of these rights determinations may be indicative of a weakness in HathiTrust's rights determination algorithm or a weakness in the Registry's identification of US Federal Documents.</div><div class="chart" id="rights_chart"></div></div>
+  <div id="rights" class="report_section">
+    <div class="report_text">HathiTrust's corpus of Federal documents contains eighteen (18) different copyrights determinations. Some of these rights determinations may be indicative of a weakness in HathiTrust's rights determination algorithm or a weakness in the Registry's identification of US Federal Documents.</div><br/>
+    <div class="chart" id="rights_chart"></div></div>
   <div id="pubdates" class="report_section">
+    <h3>Number of Publications Produced Per Year</h3>
     <p>The chart below was extracted from the publication dates reported in HathiTrust's holdings fields (974$y). <span class="num_missing_holding_pubdate"></span> of the digital objects do not include a $y. An alternative method for identifying publication date is to pull from the MARC 008 or 260$c fields. Among HathiTrust's <span class="num_bib_records"></span> bibliographic records, <span class="num_missing_pubdate"></span> are missing publication dates in their 008 and 260$c.</p>
     <div class="chart" id="pubdates_chart"></div>
   </div>
@@ -38,8 +41,11 @@
     <div class="chart" id="yearsudocs_chart"></div>
   </div>
   <div id="sudoctable" class="report_section"><div class="chart" id="sudoc_table"></div></div>
-  <div id="languages" class="report_section"><div class="chart" id="languages_table"></div>
-    <p>This collection includes materials in 142 different languages. Below is a table indicating the language, as pulled from the MARC 008 and 041 fields, along with the number of bibliographic records coded for that language. <span class="num_missing_language"></span> records are missing language information.</p></div>
+  <div id="languages" class="report_section">
+    <h3>Language</h3>
+    <p>This collection includes materials in 142 different languages. Below is a table indicating the language, as pulled from the MARC 008 and 041 fields, along with the number of bibliographic records coded for that language. <span class="num_missing_language"></span> records are missing language information.</p>
+    <div class="chart" id="languages_table"></div>
+  </div>
   <div id="comprehensiveness" class="report_section">
 		<h3>Comprehensiveness Tracking</h3>
     <p>The HathiTrust collection includes digital objects for <span id="corpus_percent"></span>% (<span class="num_unique_items"></span> unique items) of the currently known corpus of <span class="corpus_size"></span> Federal Documents Registry Records. The HathiTrust numbers are current as of <span id="report_date"></span> and the Registry numbers are current as of <span id="rpt_run_date"></span>.</p>

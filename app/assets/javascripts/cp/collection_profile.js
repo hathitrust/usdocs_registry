@@ -112,8 +112,8 @@ function addCharts(){
     //drawMonoDupesChart();
     drawBarChart('horizontal',
                  'sudocstems.tsv',
-                 'SuDoc Stems',
-                 'Sudoc Stem',
+                 'SuDoc Numbers',
+                 'Sudoc Number',
                  '# of occurences',
                  20,
                  'sudocstem_chart');
