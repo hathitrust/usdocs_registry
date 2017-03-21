@@ -1,0 +1,31 @@
+<style>
+  .chart { min-height: 350px; }
+  .report_section { margin-bottom: 50px; }
+  /*.chart { max-width:70%; }
+  .report_text { display:inline; }*/
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<%= javascript_include_tag 'stats/stat_overview' %>
+<div class="main">
+<h1>Statistical Overview of HathiTrust's Federal Documents Collection</h1>
+<div class="content-area">
+<div class="content">
+  <h2>Number of digital objects, September 2016 - present</h2>
+  <p>This chart represents the number of digitized items in the HathiTrust federal documents collection - both full and limited view.</p>
+  <div id="num_digitized"></div>
+  <h2>Type of Bibliographic Record represented in the HathiTrust federal documents collection</h2>
+  <p>This chart indicates how many bibliographic records represent federal documents that are cataloged as monographs, serials, or are undefined.</p>
+  <div id="num_bibs"></div>
+  <h2>Superintendent of Documents (SuDoc) Call Number Stem</h2>
+  <p>This chart includes a breakdown of assigned SuDoc numbers. The default view is the top 10, but the chart can be manipulated to include all SuDocs or a single stem.</p>
+  <select id="sudoc_filter">
+    <option value="Top 10" selected>Top 10</option>
+    <option value="All">All SuDocs</option>
+  </select>
+  <div id="num_sudocs"></div>
+
+</div><!-- content -->
+</div><!-- content-area-->
+
