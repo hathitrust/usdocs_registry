@@ -15,9 +15,10 @@ class ApplicationController < ActionController::Base
                 :password => Rails.application.config.jira_password,
                 :site     => 'https://tools.lib.umich.edu/',
                 :context_path => '/jira',
-                :auth_type => :basic,
+                :auth_type => :cookie,
+                :use_cookies => true,
                 :read_timeout => 120,
-                :use_ssl => false
+                :use_ssl => true
     }
 
     client = JIRA::Client.new(options)
