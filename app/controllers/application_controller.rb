@@ -13,9 +13,11 @@ class ApplicationController < ActionController::Base
     options = {
                 :username => Rails.application.config.jira_user,
                 :password => Rails.application.config.jira_password,
-                :site     => 'https://wush.net',
-                :context_path => '/jira/hathitrust',
-                :auth_type => :basic
+                :site     => 'https://tools.lib.umich.edu/',
+                :context_path => '/jira',
+                :auth_type => :basic,
+                :read_timeout => 120,
+                :use_ssl => false
     }
 
     client = JIRA::Client.new(options)
@@ -31,9 +33,6 @@ class ApplicationController < ActionController::Base
                  "labels"=> ["feddocs"],
                  "summary"=> "[FedDoc Registry] Feedback form",
                  "description"=> params.map{|k,v| "#{k}: #{v}"}.join("\r\n"),
-                 "assignee"=> {
-                    "name"=> "valglenn@umich.edu"
-                 },
                  "issuetype"=> {
                     "name"=> "Website"
                  }
