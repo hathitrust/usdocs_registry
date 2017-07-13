@@ -36,7 +36,10 @@ class ApplicationController < ActionController::Base
                  "description"=> params.map{|k,v| "#{k}: #{v}"}.join("\r\n"),
                  "issuetype"=> {
                     "name"=> "Website"
-                 }
+                 },
+                "assignee"=> {
+                    "name"=> Rails.application.config.jira_assignee
+                }
              }
           }
     res = issue.save(data)
