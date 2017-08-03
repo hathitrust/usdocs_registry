@@ -37,7 +37,6 @@ function drawAreaChart(source_data, title, divid, sclass){
         var header = arrayData[0]
         /* don't need Month */
         month = header.shift
-        console.log(arrayData)
         var data = new google.visualization.arrayToDataTable(arrayData);
          
         var options = {
@@ -49,7 +48,6 @@ function drawAreaChart(source_data, title, divid, sclass){
         var chart = new google.visualization.AreaChart(document.getElementById(divid));
         //use a DataView to filter 
         if( sclass != 'All' && divid == 'num_sudocs') {
-          console.log(sclass)
           var view = new google.visualization.DataView(data);
         
           if( sclass == 'Top 10' ){

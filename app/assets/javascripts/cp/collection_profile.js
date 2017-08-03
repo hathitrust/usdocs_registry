@@ -346,7 +346,6 @@ function drawTable(source_data, columns, div_id){
       tsv[i] = row.slice(1).map(Number);
     }
     tsv[i].unshift(row[0]);
-    console.log(tsv[i])
   }
   data.addRows(tsv);
   var options = {
