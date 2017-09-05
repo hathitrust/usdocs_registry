@@ -3,5 +3,5 @@ task :update_oclc_list do
   dir = Rails.root.join('public', 'assets').to_s
   puts dir
   `wget https://github.com/HTGovdocs/feddoc_oclc_nums/blob/master/feddoc_oclc_nums.txt?raw=true -O #{dir}/feddoc_oclc_nums.txt`
-  `gzip #{dir}/feddoc_oclc_nums.txt`
+  `gzip -f #{dir}/feddoc_oclc_nums.txt`
 end
