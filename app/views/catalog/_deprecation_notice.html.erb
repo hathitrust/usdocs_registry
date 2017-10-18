@@ -1,0 +1,5 @@
+<div class="warning">
+  <p>This record has been deprecated. <%= Date.parse(@document[:deprecated_timestamp].first).strftime("%B %-d, %Y") %></p>
+  <p><%= @document[:deprecated_reason].first.sub(/ [a-z0-9]*$/, '') %></p>
+</div>
+
