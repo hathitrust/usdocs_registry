@@ -15,7 +15,7 @@ module ApplicationHelper
     resources = []
     
     document.to_marc.find_all{|f| '856' === f.tag && f.indicator1 === '4' && f.indicator2 === '0' }.each do | eresource |   
-      if eresource['u'].match(re) 
+      if eresource['u'] && eresource['u'].match(re) 
         resources << [eresource['u'], eresource['u']]
       end
     end
