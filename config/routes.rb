@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
-  #scope '/usdocs_registry' do
+  mount Blacklight::Engine => '/'
   Blacklight::Marc.add_routes(self)
   root to: "catalog#index"
+    concern :searchable, Blacklight::Routes::Searchable.new
+  
+  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
+    concerns :searchable
+  end
+
+  concern :exportable, Blacklight::Routes::Exportable.new
+  resources :solr_documents, only:[:show], path: '/catalog', controller: 'catalog' do
+    concerns :exportable
+  end
+
   post 'feedback' => 'application#feedback'
-  blacklight_for :catalog
 
   get 'about' => 'pages#about'
 
@@ -19,50 +29,4 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-  #end
 end

@@ -22,7 +22,8 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-  config.serve_static_files = true #ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = true
+  #deprecated: config.serve_static_files = true #ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier

@@ -3,6 +3,7 @@ require 'bundler'
 Bundler.require(:default)
 require ::File.expand_path('../config/environment', __FILE__)
 
+require_relative 'config/environment'
 
 class ScriptName
   def initialize(app, name)

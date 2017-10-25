@@ -1,13 +1,12 @@
 # -*- encoding : utf-8 -*-
 class CatalogController < ApplicationController  
-  include Blacklight::Marc::Catalog
 
   include Blacklight::Catalog
+  include Blacklight::Marc::Catalog
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = { 
-      :qt => 'search',
       :rows => 10 
     }
     
@@ -59,8 +58,6 @@ class CatalogController < ApplicationController
       :ht_full_view => { :label => 'Full View', :fq => "ht_availability:\"Full View\"" },
       :ht_limited_view => { :label => 'Limited', :fq => "ht_availability:\"Limited View\"" },
       :ht_no_view => { :label => 'Not In HathiTrust', :fq => "ht_availability:\"Not In HathiTrust\"" }
-      #:ht_full_view => { :label => 'Full View', :fq => "ht_ids_fv:[* TO *]" },
-      #:ht_limited_view => { :label => 'Limited', :fq => "ht_ids_lv:[* TO *]" }
     }
       
     config.add_facet_field 'format', :label => 'Format'
