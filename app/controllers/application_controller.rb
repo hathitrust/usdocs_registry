@@ -7,6 +7,9 @@ class ApplicationController < ActionController::Base
     "application"
   end
 
+  def feedback_params
+    params.permit(:current_url,:comments,:email)
+  end
 
   #hits the jira api
   def feedback
@@ -33,7 +36,7 @@ class ApplicationController < ActionController::Base
                  },
                  "labels"=> ["feddocs"],
                  "summary"=> "[FedDoc Registry] Feedback form",
-                 "description"=> params.map{|k,v| "#{k}: #{v}"}.join("\r\n"),
+                 "description"=> feedback_params.map{|k,v| "#{k}: #{v}"}.join("\r\n"),
                  "issuetype"=> {
                     "name"=> "Website"
                  },
