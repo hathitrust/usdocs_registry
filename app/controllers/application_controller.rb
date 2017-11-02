@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
                  },
                  "labels"=> ["feddocs"],
                  "summary"=> "[FedDoc Registry] Feedback form",
-                 "description"=> feedback_params.to_h.map{|k,v| "#{k}: #{v}"}.join("\r\n"),
+                 "description"=> feedback_params.map{|k,v| "#{k}: #{v}"}.join("\r\n"),
                  "issuetype"=> {
                     "name"=> "Website"
                  },
