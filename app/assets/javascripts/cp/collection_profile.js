@@ -65,6 +65,9 @@ function addSummaryData(){
   $('.num_missing_pubdate').html(summary['num_missing_pubdate'].toLocaleString());
   $('.num_missing_sudoc').html(summary['num_missing_sudoc'].toLocaleString());
   $('.num_missing_holding_pubdate').html(summary['num_missing_holding_pubdate'].toLocaleString());
+  if( summary['num_rights'] ){
+    $('.num_rights').html(summary['num_rights'].toLocaleString());
+  }else{ $('.num_rights').html('eighteen (18)'); }
   
 }
    
