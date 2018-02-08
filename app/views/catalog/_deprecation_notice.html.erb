@@ -1,5 +1,13 @@
 <div class="warning">
   <p>This record has been deprecated. <%= Date.parse(@document[:deprecated_timestamp].first).strftime("%B %-d, %Y") %></p>
   <p><%= @document[:deprecated_reason].first.sub(/ [a-z0-9]*$/, '') %></p>
+  <% if @document[:successors].count > 0 %>
+    <p>Succeeded by the following records:
+    <ul>
+    <% @document[:successors].uniq.each do |reg_id| %>
+      <li><%= link_to_document reg_id, 'Registry Record', :class=>'cataloglinkhref' %></li>
+    <% end %>
+    </ul>
+  <% end %>
 </div>
 
