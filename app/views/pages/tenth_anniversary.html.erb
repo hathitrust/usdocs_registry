@@ -1,0 +1,23 @@
+<style>
+  .chart { min-height: 350px; }
+  .report_section { margin-bottom: 50px; }
+  /*.chart { max-width:70%; }
+  .report_text { display:inline; }*/
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<%= javascript_include_tag 'anniversary/charts.js' %>
+<div class="main">
+<h1>10 Years of the HathiTrust Digital Libary</h1>
+<div class="content-area">
+<div class="content">
+  <h2>Content Providers 2008 - present</h2>
+  <div id="content_providers"></div> 
+  <h2>Language 2008 - present</h2>
+  <div id="language"></div> 
+  <h2>Publication Dates</h2>
+  <div id="pub_date"></div>
+</div><!-- content -->
+</div><!-- content-area-->
+

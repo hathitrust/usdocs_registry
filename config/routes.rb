@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get 'stat_overview' => 'pages#stat_overview'
 
+  get 'tenth_anniversary' => 'pages#tenth_anniversary'
+
   get 'collection_profile' => 'pages#collection_profile'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
