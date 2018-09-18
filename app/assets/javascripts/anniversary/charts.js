@@ -9,6 +9,9 @@ $(document).ready(function(){
   drawAreaChart('assets/tenth_anniversary/yearly_contributions.csv', 
                 'Content Providers',
                 'content_providers');
+  drawAreaChart('assets/tenth_anniversary/yearly_contributions_percent.csv', 
+                'Content Providers % of Corpus',
+                'content_providers_percent');
   drawAreaChart('assets/tenth_anniversary/lang_date.csv', 
                 'Languages',
                 'language');
