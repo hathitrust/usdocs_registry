@@ -12,6 +12,7 @@ $(document).ready(function(){
   drawAreaChart('assets/tenth_anniversary/yearly_contributions_percent.csv', 
                 'Content Providers % of Corpus',
                 'content_providers_percent');
+  drawColumnChart('assets/tenth_anniversary/yearly_contributions_percent.csv');
   drawAreaChart('assets/tenth_anniversary/lang_date.csv', 
                 'Languages',
                 'language');
@@ -39,6 +40,34 @@ $(document).ready(function(){
                   sudoc_class);
   });
 });
+
+function drawColumnChart(source_data){
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      $.get(source_data, function(csvString) {
+        /*google.charts.load('current', {'packages':['corechart', 'area']});*/
+        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        var header = arrayData[0]
+        var data = new google.visualization.arrayToDataTable(arrayData);
+        header[0] = {label: 'Year', id: 'year', format: ''}
+        data[0] = header
+        console.log(data)
+        var options = {
+          title: "% of corpus",
+          width: "80%",
+          height: 600,
+          bar: {groupWidth: "95%"},
+          legend: { position: "none" },
+          isStacked: true,
+          bars: 'vertical',
+          hAxis: { gridlines: {count: 9}, format: '' }
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("content_providers_percent_bar"));
+        chart.draw(data, options);
+      })
+    }
+}
 
 function drawAreaChart(source_data, title, divid, sclass){
   sclass = sclass || 'Top 10'
