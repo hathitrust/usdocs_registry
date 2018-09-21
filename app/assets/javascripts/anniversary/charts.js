@@ -31,8 +31,8 @@ $(document).ready(function(){
   drawPie('assets/tenth_anniversary/music_contribs_2018.csv',
           'Music Contributors 2018',
           'music_contribs_2018');
-  drawTreeMap('assets/tenth_anniversary/classifications.csv',
-              'Library of Congress Classifications',
+  drawTreeMap('assets/tenth_anniversary/classification_counts.csv',
+              '',
               'classifications');
   
 
@@ -54,15 +54,17 @@ $(document).ready(function(){
 });
 
 function drawTreeMap(source_data, title, divid){
-    google.charts.load("current", {packages:["corechart"]});
+    google.charts.load("current", {packages:["treemap"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
       $.get(source_data, function(csvString) {
         /*google.charts.load('current', {'packages':['corechart', 'area']});*/
         var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
         var data = new google.visualization.arrayToDataTable(arrayData);
-        var options = { title: title }
-        var chart = new google.visualization.PieChart(document.getElementById(divid));
+        var options = { title: title,
+                        generateTooltip: function(row,size,value){ return size;}
+                       }
+        var chart = new google.visualization.TreeMap(document.getElementById(divid));
         chart.draw(data, options);
       });
     }
