@@ -15,7 +15,14 @@ $(document).ready(function(){
   drawAreaChart('assets/tenth_anniversary/yearly_contributions_percent.csv', 
                 'Content Providers % of Corpus',
                 'content_providers_percent');
-  drawColumnChart('assets/tenth_anniversary/yearly_contributions_percent.csv');
+  drawColumnChart('assets/tenth_anniversary/yearly_contributions_percent.csv',
+                  'content_providers_percent_bar',
+                  9,
+                  600);
+  drawColumnChart('assets/tenth_anniversary/contributions.csv',
+                  'contribs_2018',
+                  1,
+                  '90%');
   drawAreaChart('assets/tenth_anniversary/lang_date.csv', 
                 'Languages',
                 'language');
@@ -88,7 +95,7 @@ function drawPie(source_data, title, divid){
 }
 
  
-function drawColumnChart(source_data){
+function drawColumnChart(source_data, divid, gridlines, height){
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -101,16 +108,16 @@ function drawColumnChart(source_data){
         data[0] = header
         console.log(data)
         var options = {
-          title: "% of corpus",
+          title: "% of Corpus",
           width: "80%",
-          height: 600,
+          height: height,
           bar: {groupWidth: "95%"},
           legend: { position: "none" },
           isStacked: true,
           bars: 'vertical',
-          hAxis: { gridlines: {count: 9}, format: '' }
+          hAxis: { gridlines: {count: gridlines}, title: '', format: '' }
         };
-        var chart = new google.visualization.ColumnChart(document.getElementById("content_providers_percent_bar"));
+        var chart = new google.visualization.ColumnChart(document.getElementById(divid));
         chart.draw(data, options);
       })
     }
