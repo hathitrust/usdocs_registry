@@ -15,12 +15,19 @@ $(document).ready(function(){
   drawAreaChart('assets/tenth_anniversary/yearly_contributions_percent.csv', 
                 'Content Providers % of Corpus',
                 'content_providers_percent');
-  drawColumnChart('assets/tenth_anniversary/yearly_contributions_percent.csv',
+  drawColumnChart('% of Corpus',
+                  'assets/tenth_anniversary/yearly_contributions_percent.csv',
                   'content_providers_percent_bar',
                   9,
                   600);
-  drawColumnChart('assets/tenth_anniversary/contributions.csv',
+  drawColumnChart('Content Providers',
+                  'assets/tenth_anniversary/contributions.csv',
                   'contribs_2018',
+                  1,
+                  '90%');
+  drawColumnChart('Languages',
+                  'assets/tenth_anniversary/languages_2018.csv',
+                  'languages_2018',
                   1,
                   '90%');
   drawAreaChart('assets/tenth_anniversary/lang_date.csv', 
@@ -95,7 +102,7 @@ function drawPie(source_data, title, divid){
 }
 
  
-function drawColumnChart(source_data, divid, gridlines, height){
+function drawColumnChart(title, source_data, divid, gridlines, height){
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -108,12 +115,12 @@ function drawColumnChart(source_data, divid, gridlines, height){
         data[0] = header
         console.log(data)
         var options = {
-          title: "% of Corpus",
+          title: title,
           width: "80%",
           height: height,
           bar: {groupWidth: "95%"},
           legend: { position: "none" },
-          isStacked: true,
+          isStacked: 'percent',
           bars: 'vertical',
           hAxis: { gridlines: {count: gridlines}, title: '', format: '' }
         };

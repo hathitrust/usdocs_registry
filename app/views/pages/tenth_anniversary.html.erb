@@ -3,36 +3,43 @@
   .report_section { margin-bottom: 50px; }
   /*.chart { max-width:70%; }
   .report_text { display:inline; }*/
+  #languages_2018 {
+    padding-left: 2rem;
+    padding-right: 0rem;
+    border-left: 1px solid rgb(225,223,223);
+    border-right: none;
+  }
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <%= javascript_include_tag 'anniversary/charts.js' %>
-<div class="container page centered">
-<div class="sidebar sidebar-left" id="contribs_2018"></div>
+<div class="container page centered" style="width: 120rem;">
+<div class="sidebar sidebar-left" id="contribs_2018"> </div>
 <div class="main">
-<h1>10 Years of the HathiTrust Digital Libary</h1>
-<div class="content-area">
-<div class="content">
-  <h2>Content Providers 2008 - present</h2>
-  <div id="content_providers"></div> 
-  <h2>Content Providers 2008 - present Percentages</h2>
-  <div id="content_providers_percent"></div> 
-  <h2>Content Providers 2008 - present Percentages</h2>
-  <div id="content_providers_percent_bar"></div> 
-  <h2>Language 2008 - present</h2>
-  <div id="language"></div> 
-  <h2>Publication Dates</h2>
-  <div id="pub_date"></div>
-  <h2>Growth of the Music Collection</div>
-  <div id="music_growth"></div>
-  <div>
-    <div id="music_contribs_2008"></div>
-    <div id="music_contribs_2018"></div>
-  </div>
-  <h2>Library of Congress Classifcations</h2>
-  <div id="classifications" style="min-height:400px;"></div>
-</div><!-- content -->
-</div><!-- content-area-->
+  <h1>10 Years of the HathiTrust Digital Libary</h1>
+  <div class="content-area">
+    <div class="content">
+      <h2>Content Providers 2008 - present</h2>
+      <div id="content_providers"></div> 
+      <h2>Content Providers 2008 - present Percentages</h2>
+      <div id="content_providers_percent"></div> 
+      <h2>Content Providers 2008 - present Percentages</h2>
+      <div id="content_providers_percent_bar"></div> 
+      <h2>Language 2008 - present</h2>
+      <div id="language"></div> 
+      <h2>Publication Dates</h2>
+      <div id="pub_date"></div>
+      <h2>Growth of the Music Collection</h2>
+      <div id="music_growth"></div>
+      <div>
+        <div id="music_contribs_2008"></div>
+        <div id="music_contribs_2018"></div>
+      </div>
+      <h2>Library of Congress Classifcations</h2>
+      <div id="classifications" style="min-height:400px;"> </div>
+    </div><!-- content -->
+  </div><!-- content-area-->
+</div><!-- main -->
+<div class="sidebar sidebar-left" id="languages_2018"></div>
 </div>
-
