@@ -12,16 +12,21 @@ $(document).ready(function(){
   drawAreaChart('assets/tenth_anniversary/music_over_time_counts.csv',
                 'Items Classified as Music',
                 'music_growth');
+  drawAreaChart('assets/tenth_anniversary/portuguese_growth.csv',
+                'Growth of the Portuguese Collection',
+                'portuguese_growth');
+/*  
   drawAreaChart('assets/tenth_anniversary/yearly_contributions_percent.csv', 
                 'Content Providers % of Corpus',
                 'content_providers_percent');
+*/
   drawColumnChart('% of Corpus',
                   'assets/tenth_anniversary/yearly_contributions_percent.csv',
                   'content_providers_percent_bar',
                   9,
                   600);
   drawColumnChart('Content Providers',
-                  'assets/tenth_anniversary/contributions.csv',
+                  'assets/tenth_anniversary/contributions_2018.csv',
                   'contribs_2018',
                   1,
                   '90%');
@@ -118,10 +123,13 @@ function drawColumnChart(title, source_data, divid, gridlines, height){
           title: title,
           width: "80%",
           height: height,
-          bar: {groupWidth: "95%"},
+          /* chartArea: {left: 100}, */
+          
+          bar: {groupWidth: "100%"},
           legend: { position: "none" },
           isStacked: 'percent',
           bars: 'vertical',
+          vAxis: { title: '', format: '', textPosition: 'none' },
           hAxis: { gridlines: {count: gridlines}, title: '', format: '' }
         };
         var chart = new google.visualization.ColumnChart(document.getElementById(divid));
