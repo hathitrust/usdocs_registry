@@ -102,7 +102,7 @@ function drawColumnChart(title, source_data, divid, gridlines, height){
         var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
         var header = arrayData[0]
         var data = new google.visualization.arrayToDataTable(arrayData);
-        header[0] = {label: 'Year', id: 'year', format: ''}
+        header[0] = {label: 'Year', id: 'year', format: '0'}
         data[0] = header
         var options = {
           title: title,
@@ -115,7 +115,7 @@ function drawColumnChart(title, source_data, divid, gridlines, height){
           isStacked: 'percent',
           bars: 'vertical',
           vAxis: { title: '', format: '', textPosition: 'none' },
-          hAxis: { gridlines: {count: gridlines}, title: '', format: '' }
+          hAxis: { gridlines: {count: gridlines}, title: '', format: '0' }
         };
         var chart = new google.visualization.ColumnChart(document.getElementById(divid));
         chart.draw(data, options);
@@ -140,7 +140,7 @@ function drawAreaChart(source_data, title, divid, sclass){
           width:"80%",
           height:600,
           isStacked:true,
-          hAxis: { gridlines: {count: 10}, format: '' }
+          hAxis: { gridlines: {count: 10}, format: '0' }
 
         }; 
         var chart = new google.visualization.AreaChart(document.getElementById(divid));
