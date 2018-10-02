@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  jq = jQuery
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/yearly_contributions.csv', 
                 'Content Providers',
                 'content_providers');
@@ -45,9 +45,9 @@ function drawTreeMap(source_data, title, divid){
     google.charts.load("current", {packages:["treemap"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      $.get(source_data, function(csvString) {
+      jq.get(source_data, function(csvString) {
         /*google.charts.load('current', {'packages':['corechart', 'area']});*/
-        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
         var data = new google.visualization.arrayToDataTable(arrayData);
         var options = { title: title,
                         generateTooltip: function(row,size,value){ return size;}
@@ -64,9 +64,9 @@ function drawPie(source_data, title, divid){
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      $.get(source_data, function(csvString) {
+      jq.get(source_data, function(csvString) {
         /*google.charts.load('current', {'packages':['corechart', 'area']});*/
-        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
         var data = new google.visualization.arrayToDataTable(arrayData);
         var options = { title: title }
         var chart = new google.visualization.PieChart(document.getElementById(divid));
@@ -80,9 +80,9 @@ function drawColumnChart(title, source_data, divid, gridlines, height){
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-      $.get(source_data, function(csvString) {
+      jq.get(source_data, function(csvString) {
         /*google.charts.load('current', {'packages':['corechart', 'area']});*/
-        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
         var header = arrayData[0]
         var data = new google.visualization.arrayToDataTable(arrayData);
         header[0] = {label: 'Year', id: 'year', format: '0'}
@@ -110,9 +110,9 @@ function drawAreaChart(source_data, title, divid, sclass){
   sclass = sclass || 'Top 10'
   google.charts.load('current', {'packages':['corechart', 'line']});
   google.charts.setOnLoadCallback(function(){
-    $.get(source_data, function(csvString) {
+    jq.get(source_data, function(csvString) {
         /*google.charts.load('current', {'packages':['corechart', 'area']});*/
-        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+        var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
         var header = arrayData[0]
         /* don't need Month */
         month = header.shift
