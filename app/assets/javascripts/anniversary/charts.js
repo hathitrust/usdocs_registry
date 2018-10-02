@@ -39,22 +39,7 @@ $(document).ready(function(){
   drawTreeMap('/usdocs_registry/assets/tenth_anniversary/classification_counts.csv',
               '',
               'classifications');
-  
 
-  /* Fill in the select */
-  $.get('assets/stats/sudoc_classes.csv', function(csvString){
-    var sudoc_classes = csvString.split(',')
-    sudoc_classes.forEach(function(sclass, index){
-      $('#sudoc_filter').append('<option>'+sclass+'</option>');
-    });
-  });
-    
-  $('#sudoc_filter').change(function(){
-    sudoc_class = $('#sudoc_filter').val();
-    drawAreaChart('assets/stats/num_sudocs.csv', 
-                  'SuDoc Class',
-                  'num_sudocs',
-                  sudoc_class);
   });
 });
 
