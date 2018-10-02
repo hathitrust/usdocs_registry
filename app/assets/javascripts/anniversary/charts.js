@@ -39,8 +39,6 @@ $(document).ready(function(){
   drawTreeMap('/usdocs_registry/assets/tenth_anniversary/classification_counts.csv',
               '',
               'classifications');
-
-  });
 });
 
 function drawTreeMap(source_data, title, divid){
