@@ -1,56 +1,42 @@
 $(document).ready(function(){
 
-  drawAreaChart('data/num_dig.csv', 
-                '# of Digitized Objects',
-                'num_digitized');
-  drawAreaChart('data/num_bibs.csv', 
-                'Bibliographic Records',
-                'num_bibs');
-  drawAreaChart('assets/tenth_anniversary/yearly_contributions.csv', 
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/yearly_contributions.csv', 
                 'Content Providers',
                 'content_providers');
-  drawAreaChart('assets/tenth_anniversary/music_over_time_counts.csv',
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/music_over_time_counts.csv',
                 'Items Classified as Music',
                 'music_growth');
-  drawAreaChart('assets/tenth_anniversary/portuguese_growth.csv',
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/portuguese_growth.csv',
                 'Growth of the Portuguese Collection',
                 'portuguese_growth');
-/*  
-  drawAreaChart('assets/tenth_anniversary/yearly_contributions_percent.csv', 
-                'Content Providers % of Corpus',
-                'content_providers_percent');
-*/
   drawColumnChart('% of Corpus',
-                  'assets/tenth_anniversary/yearly_contributions_percent.csv',
+                  '/usdocs_registry/assets/tenth_anniversary/yearly_contributions_percent.csv',
                   'content_providers_percent_bar',
                   9,
                   600);
   drawColumnChart('Content Providers',
-                  'assets/tenth_anniversary/contributions_2018.csv',
+                  '/usdocs_registry/assets/tenth_anniversary/contributions_2018.csv',
                   'contribs_2018',
                   1,
                   '90%');
   drawColumnChart('Languages',
-                  'assets/tenth_anniversary/languages_2018.csv',
+                  '/usdocs_registry/assets/tenth_anniversary/languages_2018.csv',
                   'languages_2018',
                   1,
                   '90%');
-  drawAreaChart('assets/tenth_anniversary/lang_date.csv', 
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date.csv', 
                 'Languages',
                 'language');
-  drawAreaChart('assets/stats/num_sudocs.csv', 
-                'SuDoc Class',
-                'num_sudocs');
-  drawAreaChart('assets/tenth_anniversary/pub_dates_counted.csv', 
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/pub_dates_counted.csv', 
                 'Publication Dates',
                 'pub_date');
-  drawPie('assets/tenth_anniversary/music_contribs_2008.csv',
+  drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2008.csv',
           'Music Contributors 2008',
           'music_contribs_2008');
-  drawPie('assets/tenth_anniversary/music_contribs_2018.csv',
+  drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2018.csv',
           'Music Contributors 2018',
           'music_contribs_2018');
-  drawTreeMap('assets/tenth_anniversary/classification_counts.csv',
+  drawTreeMap('/usdocs_registry/assets/tenth_anniversary/classification_counts.csv',
               '',
               'classifications');
   
@@ -118,7 +104,6 @@ function drawColumnChart(title, source_data, divid, gridlines, height){
         var data = new google.visualization.arrayToDataTable(arrayData);
         header[0] = {label: 'Year', id: 'year', format: ''}
         data[0] = header
-        console.log(data)
         var options = {
           title: title,
           width: "80%",
