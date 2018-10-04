@@ -47,6 +47,26 @@ $(document).ready(function(){
                  10,
                  'contrib_chart' );
 
+  /* Environmental Science */
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/environmental_science_over_time_counts.csv',
+                'Items Classified as Environmental Science',
+                'env_science_growth');
+  drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2008.csv',
+          'Environmental Science Contributors 2008',
+          'env_science_contribs_2008');
+  drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2018.csv',
+          'Environmental Science Contributors 2018',
+          'env_science_contribs_2018');
+  /* Agriculture */
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/agriculture_over_time_counts.csv',
+                'Items Classified as Agriculture',
+                'agriculture_growth');
+  drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2008.csv',
+          'Agriculture Contributors 2008',
+          'ag_contribs_2008');
+  drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2018.csv',
+          'Agriculture Contributors 2018',
+          'ag_contribs_2018');
  });
 
 
