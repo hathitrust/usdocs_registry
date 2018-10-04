@@ -1,8 +1,5 @@
 $(document).ready(function(){
   jq = jQuery
-  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/yearly_contributions.csv', 
-                'Content Providers',
-                'content_providers');
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/music_over_time_counts.csv',
                 'Items Classified as Music',
                 'music_growth');
@@ -13,17 +10,20 @@ $(document).ready(function(){
                   '/usdocs_registry/assets/tenth_anniversary/yearly_contributions_percent.csv',
                   'content_providers_percent_bar',
                   9,
-                  600);
+                  600,
+                  'vertical');
   drawColumnChart('Content Providers',
                   '/usdocs_registry/assets/tenth_anniversary/contributions_2018.csv',
                   'contribs_2018',
                   1,
-                  '90%');
+                  '90%',
+                  'vertical');
   drawColumnChart('Languages',
                   '/usdocs_registry/assets/tenth_anniversary/languages_2018.csv',
                   'languages_2018',
                   1,
-                  '90%');
+                  '90%',
+                  'vertical');
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date.csv', 
                 'Languages',
                 'language');
@@ -36,28 +36,18 @@ $(document).ready(function(){
   drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2018.csv',
           'Music Contributors 2018',
           'music_contribs_2018');
-  drawTreeMap('/usdocs_registry/assets/tenth_anniversary/classification_counts.csv',
-              '',
-              'classifications');
-});
+  drawAreaChart('/usdocs_registry/assets/stats/num_dig.csv', 
+                '# of Digitized Objects',
+                'num_digitized');
+  drawBarChart('horizontal',
+                 '/usdocs_registry/assets/2018-10-01/contributors.tsv', 
+                 'Top Ten Contributors', 
+                 'Contributor',
+                 'Number of Items Contributed',
+                 10,
+                 'contrib_chart' );
 
-function drawTreeMap(source_data, title, divid){
-    google.charts.load("current", {packages:["treemap"]});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      jq.get(source_data, function(csvString) {
-        /*google.charts.load('current', {'packages':['corechart', 'area']});*/
-        var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
-        var data = new google.visualization.arrayToDataTable(arrayData);
-        var options = { title: title,
-                        generateTooltip: function(row,size,value){ return size;}
-                       }
-        var chart = new google.visualization.TreeMap(document.getElementById(divid));
-        chart.draw(data, options);
-      });
-    }
-}
-
+ });
 
 
 function drawPie(source_data, title, divid){
@@ -76,7 +66,7 @@ function drawPie(source_data, title, divid){
 }
 
  
-function drawColumnChart(title, source_data, divid, gridlines, height){
+function drawColumnChart(title, source_data, divid, gridlines, height, orientation){
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -84,11 +74,16 @@ function drawColumnChart(title, source_data, divid, gridlines, height){
         /*google.charts.load('current', {'packages':['corechart', 'area']});*/
         var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
         var header = arrayData[0]
+        var formatter = new google.visualization.NumberFormat({pattern: '0'});
         var data = new google.visualization.arrayToDataTable(arrayData);
         header[0] = {label: 'Year', id: 'year', format: '0'}
         data[0] = header
+        formatter.format(data, 0);      
         var options = {
           title: title,
+          titleTextStyle: {
+            fontSize: 18
+          },
           width: "80%",
           height: height,
           /* chartArea: {left: 100}, */
@@ -96,7 +91,7 @@ function drawColumnChart(title, source_data, divid, gridlines, height){
           bar: {groupWidth: "100%"},
           legend: { position: "none" },
           isStacked: 'percent',
-          bars: 'vertical',
+          bars: orientation,
           vAxis: { title: '', format: '', textPosition: 'none' },
           hAxis: { gridlines: {count: gridlines}, title: '', format: '0' }
         };
@@ -114,9 +109,11 @@ function drawAreaChart(source_data, title, divid, sclass){
         /*google.charts.load('current', {'packages':['corechart', 'area']});*/
         var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
         var header = arrayData[0]
+        var formatter = new google.visualization.NumberFormat({pattern: '0'});
         /* don't need Month */
         month = header.shift
         var data = new google.visualization.arrayToDataTable(arrayData);
+        formatter.format(data, 0);      
          
         var options = {
           title: title,
@@ -150,4 +147,61 @@ function drawAreaChart(source_data, title, divid, sclass){
     });
   });
 }
- 
+
+function getData(source_data){
+  return $.ajax({
+            url: "/usdocs_registry/assets/2018-10-01/"+source_data,
+            dataType: "json",
+            async: false
+          }).responseText;
+}
+
+function drawBarChart(bar_orientation, source_data, title, first_column, second_column, top_num, divid) {
+  google.charts.load("current", {packages:["bar"]});
+  google.charts.setOnLoadCallback(function(){
+    jq.get(source_data, function(tsvString) {
+      var dt = new google.visualization.DataTable();
+      dt.addColumn('string', first_column);
+      dt.addColumn('number', second_column);
+      var other_count = 0
+      var other_total = 0
+      tsvString.split("\n").forEach(function(line, index){
+        if( line == ''  ){ return; }
+
+        row = line.split("\t");
+        if( index < top_num ){
+          dt.addRows([
+            [row[0], parseInt(row[1])]
+          ]);
+        }
+        else {
+          other_count += 1;
+          other_total = other_total + parseInt(row[1])
+        }
+      });
+      if( other_total > 0 ){
+        dt.addRows([
+          ['Others ('+other_count+')', other_total]
+        ]);
+      }
+
+      // Set chart options
+      var options = {
+        chart: {
+          title:title,
+          height:600
+        },
+        axes: {
+                y: { all: { format: { pattern: 'decimal' } } },
+                x: { all: { format: { pattern: 'decimal' } } }
+              },
+        legend: {position: 'none'},
+        chartArea: {width:"50%"},
+        bars: bar_orientation 
+      };
+      var chart;
+      chart = new google.charts.Bar(document.getElementById(divid));    
+      chart.draw(dt, google.charts.Bar.convertOptions(options));
+    });
+  });
+}
