@@ -67,7 +67,17 @@ $(document).ready(function(){
   drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2018.csv',
           'Agriculture Contributors 2018',
           'ag_contribs_2018');
- });
+  /* Classics */
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/classics_over_time.csv',
+                'Items Classified as Classics',
+                'classics_growth');
+  drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2008.csv',
+          'Classics Contributors 2008',
+          'classics_2008');
+  drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2018.csv',
+          'Classics Contributors 2018',
+          'classics_2018');
+  });
 
 
 function drawPie(source_data, title, divid){
