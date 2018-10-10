@@ -1,5 +1,4 @@
-$(document).ready(function(){
-  jq = jQuery
+jq(document).ready(function(){
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/music_over_time_counts.csv',
                 'Items Classified as Music',
                 'music_growth');
@@ -18,12 +17,13 @@ $(document).ready(function(){
                   1,
                   '90%',
                   'vertical');
+/*
   drawColumnChart('Languages',
                   '/usdocs_registry/assets/tenth_anniversary/languages_2018.csv',
                   'languages_2018',
                   1,
                   '90%',
-                  'vertical');
+                  'vertical');*/
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date.csv', 
                 'Languages',
                 'language');
@@ -179,7 +179,7 @@ function drawAreaChart(source_data, title, divid, sclass){
 }
 
 function getData(source_data){
-  return $.ajax({
+  return jq.ajax({
             url: "/usdocs_registry/assets/2018-10-01/"+source_data,
             dataType: "json",
             async: false
