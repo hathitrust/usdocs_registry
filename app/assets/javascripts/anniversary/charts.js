@@ -114,6 +114,7 @@ function drawColumnChart(title, source_data, divid, gridlines, height, orientati
           titleTextStyle: {
             fontSize: 18
           },
+          tooltip: {isHtml: true;},
           width: "80%",
           height: height,
           /* chartArea: {left: 100}, */
