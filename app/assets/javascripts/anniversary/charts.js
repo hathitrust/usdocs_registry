@@ -5,7 +5,7 @@ jq(document).ready(function(){
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/portuguese_growth.csv',
                 'Growth of the Portuguese Collection',
                 'portuguese_growth');
-  drawColumnChart('% of Corpus',
+  drawColumnChart('2008-2018: Contributors to HathiTrust',
                   '/usdocs_registry/assets/tenth_anniversary/yearly_contributions_percent.csv',
                   'content_providers_percent_bar',
                   9,
@@ -114,7 +114,7 @@ function drawColumnChart(title, source_data, divid, gridlines, height, orientati
           titleTextStyle: {
             fontSize: 18
           },
-          tooltip: {isHtml: true;},
+          tooltip: {isHtml: true},
           width: "80%",
           height: height,
           /* chartArea: {left: 100}, */
