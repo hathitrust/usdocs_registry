@@ -29,7 +29,7 @@ jq(document).ready(function(){
                   '90%',
                   'vertical');*/
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date.csv', 
-                'Languages',
+                'All Languages',
                 'language',
                 'All',
                 '');
