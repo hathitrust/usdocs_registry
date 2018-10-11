@@ -1,10 +1,14 @@
 jq(document).ready(function(){
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/music_over_time_counts.csv',
                 'Items Classified as Music',
-                'music_growth');
+                'music_growth',
+                'All',
+                'Music is defined as LC call numbers MT, Ml, and M.');
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/portuguese_growth.csv',
                 'Growth of the Portuguese Collection',
-                'portuguese_growth');
+                'portuguese_growth',
+                'All',
+                '');
   drawColumnChart('2008-2018: Contributors to HathiTrust',
                   '/usdocs_registry/assets/tenth_anniversary/yearly_contributions_percent.csv',
                   'content_providers_percent_bar',
@@ -26,10 +30,19 @@ jq(document).ready(function(){
                   'vertical');*/
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date.csv', 
                 'Languages',
-                'language');
+                'language',
+                'All',
+                '');
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/languages_top_ten.csv', 
+                'Top 10 Languages',
+                'languages_top',
+                'All',
+                '');
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/pub_dates_counted.csv', 
                 'Publication Dates',
-                'pub_date');
+                'pub_date',
+                'All',
+                '');
   drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2008.csv',
           'Music Contributors 2008',
           'music_contribs_2008');
@@ -38,7 +51,9 @@ jq(document).ready(function(){
           'music_contribs_2018');
   drawAreaChart('/usdocs_registry/assets/stats/num_dig.csv', 
                 '# of Digitized Objects',
-                'num_digitized');
+                'num_digitized',
+                'All',
+                '');
   drawBarChart('horizontal',
                  '/usdocs_registry/assets/2018-10-01/contributors.tsv', 
                  'Top Ten Contributors', 
@@ -50,7 +65,9 @@ jq(document).ready(function(){
   /* Environmental Science */
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/environmental_science_over_time.csv',
                 'Items Classified as Environmental Science',
-                'env_science_growth');
+                'env_science_growth',
+                'All',
+                'Environmental Science is defined as LC call numbers within GE.');
   drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2008.csv',
           'Environmental Science Contributors 2008',
           'env_science_contribs_2008');
@@ -60,7 +77,9 @@ jq(document).ready(function(){
   /* Agriculture */
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/agriculture_over_time.csv',
                 'Items Classified as Agriculture',
-                'agriculture_growth');
+                'agriculture_growth',
+                'All',
+                'Agriculture is defined as LC call numbers within S, SB, SD, SF, and SH.');
   drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2008.csv',
           'Agriculture Contributors 2008',
           'ag_contribs_2008');
@@ -70,7 +89,9 @@ jq(document).ready(function(){
   /* Classics */
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/classics_over_time.csv',
                 'Items Classified as Classics',
-                'classics_growth');
+                'classics_growth',
+                'All',
+                'Classics is defined as LC call numbers within DE, DF, DG, PA.');
   drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2008.csv',
           'Classics Contributors 2008',
           'classics_2008');
@@ -132,7 +153,7 @@ function drawColumnChart(title, source_data, divid, gridlines, height, orientati
     }
 }
 
-function drawAreaChart(source_data, title, divid, sclass){
+function drawAreaChart(source_data, title, divid, sclass, bottom_text){
   sclass = sclass || 'Top 10'
   google.charts.load('current', {'packages':['corechart', 'line']});
   google.charts.setOnLoadCallback(function(){
@@ -151,12 +172,15 @@ function drawAreaChart(source_data, title, divid, sclass){
           width:"80%",
           height:600,
           isStacked:true,
-          hAxis: { gridlines: {count: 10}, format: '0' }
+          hAxis: { gridlines: {count: 10},
+                   format: '0',
+                   title: bottom_text }
 
-        }; 
+        };
+        console.log(bottom_text); 
         var chart = new google.visualization.AreaChart(document.getElementById(divid));
         //use a DataView to filter 
-        if( sclass != 'All' && divid == 'num_sudocs') {
+        if( sclass != 'All' && divid == 'languages_top') {
           var view = new google.visualization.DataView(data);
         
           if( sclass == 'Top 10' ){
