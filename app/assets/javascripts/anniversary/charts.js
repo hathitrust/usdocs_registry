@@ -177,7 +177,6 @@ function drawAreaChart(source_data, title, divid, sclass, bottom_text){
                    title: bottom_text }
 
         };
-        console.log(bottom_text); 
         var chart = new google.visualization.AreaChart(document.getElementById(divid));
         //use a DataView to filter 
         if( sclass != 'All' && divid == 'languages_top') {
