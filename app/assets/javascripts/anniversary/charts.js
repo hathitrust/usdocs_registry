@@ -1,12 +1,11 @@
-$(document).ready(function(){
-  jq = jQuery
+jq(document).ready(function(){
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/music_over_time_counts.csv',
                 'Items Classified as Music',
                 'music_growth');
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/portuguese_growth.csv',
                 'Growth of the Portuguese Collection',
                 'portuguese_growth');
-  drawColumnChart('% of Corpus',
+  drawColumnChart('2008-2018: Contributors to HathiTrust',
                   '/usdocs_registry/assets/tenth_anniversary/yearly_contributions_percent.csv',
                   'content_providers_percent_bar',
                   9,
@@ -18,12 +17,13 @@ $(document).ready(function(){
                   1,
                   '90%',
                   'vertical');
+/*
   drawColumnChart('Languages',
                   '/usdocs_registry/assets/tenth_anniversary/languages_2018.csv',
                   'languages_2018',
                   1,
                   '90%',
-                  'vertical');
+                  'vertical');*/
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date.csv', 
                 'Languages',
                 'language');
@@ -114,6 +114,7 @@ function drawColumnChart(title, source_data, divid, gridlines, height, orientati
           titleTextStyle: {
             fontSize: 18
           },
+          tooltip: {isHtml: true},
           width: "80%",
           height: height,
           /* chartArea: {left: 100}, */
@@ -179,7 +180,7 @@ function drawAreaChart(source_data, title, divid, sclass){
 }
 
 function getData(source_data){
-  return $.ajax({
+  return jq.ajax({
             url: "/usdocs_registry/assets/2018-10-01/"+source_data,
             dataType: "json",
             async: false
