@@ -10,7 +10,7 @@ jq(document).ready(function(){
                 'All',
                 '');
   drawColumnChart('2008-2018: Contributors to HathiTrust',
-                  '/usdocs_registry/assets/tenth_anniversary/yearly_contributions_percent.csv',
+                  '/usdocs_registry/assets/tenth_anniversary/yearly_contributions_sorted.csv',
                   'content_providers_percent_bar',
                   9,
                   600,
