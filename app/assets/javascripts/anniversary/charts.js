@@ -15,7 +15,7 @@ jq(document).ready(function(){
                   9,
                   600,
                   'vertical');
-  drawColumnChart('Content Providers',
+  drawColumnChart('Percentage of the 2018 Collection by Contributor',
                   '/usdocs_registry/assets/tenth_anniversary/contributions_2018.csv',
                   'contribs_2018',
                   1,
@@ -243,7 +243,6 @@ function drawBarChart(bar_orientation, source_data, title, first_column, second_
       var options = {
         chart: {
           title:title,
-          height:600
         },
         axes: {
                 y: { all: { format: { pattern: 'decimal' } } },
@@ -251,7 +250,8 @@ function drawBarChart(bar_orientation, source_data, title, first_column, second_
               },
         legend: {position: 'none'},
         chartArea: {width:"50%"},
-        bars: bar_orientation 
+        bars: bar_orientation,
+        height: 450
       };
       var chart;
       chart = new google.charts.Bar(document.getElementById(divid));    
