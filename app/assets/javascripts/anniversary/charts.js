@@ -28,7 +28,7 @@ jq(document).ready(function(){
                   1,
                   '90%',
                   'vertical');*/
-  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date.csv', 
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date_filtered.csv', 
                 'All Languages',
                 'language',
                 'All',
