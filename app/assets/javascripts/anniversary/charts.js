@@ -15,11 +15,11 @@ jq(document).ready(function(){
                   9,
                   600,
                   'vertical');
-  drawColumnChart('Percentage of the 2018 Collection by Contributor',
+  drawColumnChart('Distribution of HathiTrust Collection by Content Provider as of October 2018',
                   '/usdocs_registry/assets/tenth_anniversary/contributions_2018.csv',
                   'contribs_2018',
                   1,
-                  4200,
+                  4800,
                   'vertical');
 /*
   drawColumnChart('Languages',
