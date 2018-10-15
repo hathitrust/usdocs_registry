@@ -19,7 +19,7 @@ jq(document).ready(function(){
                   '/usdocs_registry/assets/tenth_anniversary/contributions_2018.csv',
                   'contribs_2018',
                   1,
-                  '90%',
+                  4200,
                   'vertical');
 /*
   drawColumnChart('Languages',
