@@ -14,13 +14,22 @@ jq(document).ready(function(){
                   'content_providers_percent_bar',
                   9,
                   600,
-                  'vertical');
+                  'vertical',
+                  '100%');
   drawColumnChart('Distribution of HathiTrust Collection by Content Provider as of October 2018',
                   '/usdocs_registry/assets/tenth_anniversary/contributions_2018.csv',
                   'contribs_2018',
                   1,
                   4800,
-                  'vertical');
+                  'vertical',
+                  '100%');
+  drawMusicChart('Music Collection, 2008 and 2018',
+                  '/usdocs_registry/assets/tenth_anniversary/music_2008_2018.csv',
+                  'music_2008_2018',
+                  2,
+                  600,
+                  'vertical',
+                  '80%');
 /*
   drawColumnChart('Languages',
                   '/usdocs_registry/assets/tenth_anniversary/languages_2018.csv',
@@ -39,7 +48,7 @@ jq(document).ready(function(){
                 'All',
                 '');
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/pub_dates_counted.csv', 
-                'Publication Dates',
+                'Publication Dates as of October 2018',
                 'pub_date',
                 'All',
                 '');
@@ -116,8 +125,7 @@ function drawPie(source_data, title, divid){
     }
 }
 
- 
-function drawColumnChart(title, source_data, divid, gridlines, height, orientation){
+function drawMusicChart(title, source_data, divid, gridlines, height, orientation, groupwidth ){
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -140,7 +148,44 @@ function drawColumnChart(title, source_data, divid, gridlines, height, orientati
           height: height,
           /* chartArea: {left: 100}, */
           
-          bar: {groupWidth: "100%"},
+          bar: {groupWidth: groupwidth},
+          legend: { position: "none" },
+          isStacked: true,
+          bars: orientation,
+          vAxis: { title: '', format: '', textPosition: 'none' },
+          hAxis: { gridlines: {count: 2}, title: '', format: '0' }
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById(divid));
+        chart.draw(data, options);
+      })
+    }
+}
+
+ 
+function drawColumnChart(title, source_data, divid, gridlines, height, orientation, groupwidth){
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      jq.get(source_data, function(csvString) {
+        /*google.charts.load('current', {'packages':['corechart', 'area']});*/
+        var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
+        var header = arrayData[0]
+        var formatter = new google.visualization.NumberFormat({pattern: '0'});
+        var data = new google.visualization.arrayToDataTable(arrayData);
+        header[0] = {label: 'Year', id: 'year', format: '0'}
+        data[0] = header
+        formatter.format(data, 0);      
+        var options = {
+          title: title,
+          titleTextStyle: {
+            fontSize: 18
+          },
+          tooltip: {isHtml: true},
+          width: "80%",
+          height: height,
+          /* chartArea: {left: 100}, */
+          
+          bar: {groupWidth: groupwidth},
           legend: { position: "none" },
           isStacked: 'percent',
           bars: orientation,
