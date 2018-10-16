@@ -23,9 +23,30 @@ jq(document).ready(function(){
                   4800,
                   'vertical',
                   '100%');
-  drawMusicChart('Music Collection, 2008 and 2018',
+  drawStackedChart('Music Collection, 2008 and 2018',
                   '/usdocs_registry/assets/tenth_anniversary/music_2008_2018.csv',
                   'music_2008_2018',
+                  2,
+                  600,
+                  'vertical',
+                  '80%');
+  drawStackedChart('Environmental Science Collection, 2008 and 2018',
+                  '/usdocs_registry/assets/tenth_anniversary/env_science_2008_2018.csv',
+                  'env_science_2008_2018',
+                  2,
+                  600,
+                  'vertical',
+                  '80%');
+  drawStackedChart('Classics Collection, 2008 and 2018',
+                  '/usdocs_registry/assets/tenth_anniversary/classics_2008_2018.csv',
+                  'classics_2008_2018',
+                  2,
+                  600,
+                  'vertical',
+                  '80%');
+  drawStackedChart('Agriculture Collection, 2008 and 2018',
+                  '/usdocs_registry/assets/tenth_anniversary/ag_2008_2018.csv',
+                  'ag_2008_2018',
                   2,
                   600,
                   'vertical',
@@ -52,12 +73,12 @@ jq(document).ready(function(){
                 'pub_date',
                 'All',
                 '');
-  drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2008.csv',
+/*  drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2008.csv',
           'Music Contributors 2008',
           'music_contribs_2008');
   drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2018.csv',
           'Music Contributors 2018',
-          'music_contribs_2018');
+          'music_contribs_2018');*/
   drawAreaChart('/usdocs_registry/assets/stats/num_dig.csv', 
                 '# of Digitized Objects',
                 'num_digitized',
@@ -77,36 +98,36 @@ jq(document).ready(function(){
                 'env_science_growth',
                 'All',
                 'Environmental Science is defined as LC call numbers within GE.');
-  drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2008.csv',
+/*  drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2008.csv',
           'Environmental Science Contributors 2008',
           'env_science_contribs_2008');
   drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2018.csv',
           'Environmental Science Contributors 2018',
-          'env_science_contribs_2018');
+          'env_science_contribs_2018');*/
   /* Agriculture */
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/agriculture_over_time.csv',
                 'Items Classified as Agriculture',
                 'agriculture_growth',
                 'All',
                 'Agriculture is defined as LC call numbers within S, SB, SD, SF, and SH.');
-  drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2008.csv',
+/*  drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2008.csv',
           'Agriculture Contributors 2008',
           'ag_contribs_2008');
   drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2018.csv',
           'Agriculture Contributors 2018',
-          'ag_contribs_2018');
+          'ag_contribs_2018');*/
   /* Classics */
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/classics_over_time.csv',
                 'Items Classified as Classics',
                 'classics_growth',
                 'All',
                 'Classics is defined as LC call numbers within DE, DF, DG, PA.');
-  drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2008.csv',
+/*  drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2008.csv',
           'Classics Contributors 2008',
           'classics_2008');
   drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2018.csv',
           'Classics Contributors 2018',
-          'classics_2018');
+          'classics_2018');*/
   });
 
 
@@ -125,7 +146,7 @@ function drawPie(source_data, title, divid){
     }
 }
 
-function drawMusicChart(title, source_data, divid, gridlines, height, orientation, groupwidth ){
+function drawStackedChart(title, source_data, divid, gridlines, height, orientation, groupwidth ){
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
