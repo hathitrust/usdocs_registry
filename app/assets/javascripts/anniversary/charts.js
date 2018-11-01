@@ -14,13 +14,43 @@ jq(document).ready(function(){
                   'content_providers_percent_bar',
                   9,
                   600,
-                  'vertical');
-  drawColumnChart('Percentage of the 2018 Collection by Contributor',
+                  'vertical',
+                  '100%');
+  drawColumnChart('Distribution of HathiTrust Collection by Content Provider as of October 2018',
                   '/usdocs_registry/assets/tenth_anniversary/contributions_2018.csv',
                   'contribs_2018',
                   1,
-                  '90%',
-                  'vertical');
+                  4800,
+                  'vertical',
+                  '100%');
+  drawStackedChart('Music Collection, 2008 and 2018',
+                  '/usdocs_registry/assets/tenth_anniversary/music_2008_2018.csv',
+                  'music_2008_2018',
+                  2,
+                  600,
+                  'vertical',
+                  '80%');
+  drawStackedChart('Environmental Science Collection, 2008 and 2018',
+                  '/usdocs_registry/assets/tenth_anniversary/env_science_2008_2018.csv',
+                  'env_science_2008_2018',
+                  2,
+                  600,
+                  'vertical',
+                  '80%');
+  drawStackedChart('Classics Collection, 2008 and 2018',
+                  '/usdocs_registry/assets/tenth_anniversary/classics_2008_2018.csv',
+                  'classics_2008_2018',
+                  2,
+                  600,
+                  'vertical',
+                  '80%');
+  drawStackedChart('Agriculture Collection, 2008 and 2018',
+                  '/usdocs_registry/assets/tenth_anniversary/ag_2008_2018.csv',
+                  'ag_2008_2018',
+                  2,
+                  600,
+                  'vertical',
+                  '80%');
 /*
   drawColumnChart('Languages',
                   '/usdocs_registry/assets/tenth_anniversary/languages_2018.csv',
@@ -28,7 +58,7 @@ jq(document).ready(function(){
                   1,
                   '90%',
                   'vertical');*/
-  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date.csv', 
+  drawAreaChart('/usdocs_registry/assets/tenth_anniversary/lang_date_filtered.csv', 
                 'All Languages',
                 'language',
                 'All',
@@ -39,16 +69,16 @@ jq(document).ready(function(){
                 'All',
                 '');
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/pub_dates_counted.csv', 
-                'Publication Dates',
+                'Publication Dates as of October 2018',
                 'pub_date',
                 'All',
                 '');
-  drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2008.csv',
+/*  drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2008.csv',
           'Music Contributors 2008',
           'music_contribs_2008');
   drawPie('/usdocs_registry/assets/tenth_anniversary/music_contribs_2018.csv',
           'Music Contributors 2018',
-          'music_contribs_2018');
+          'music_contribs_2018');*/
   drawAreaChart('/usdocs_registry/assets/stats/num_dig.csv', 
                 '# of Digitized Objects',
                 'num_digitized',
@@ -68,36 +98,36 @@ jq(document).ready(function(){
                 'env_science_growth',
                 'All',
                 'Environmental Science is defined as LC call numbers within GE.');
-  drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2008.csv',
+/*  drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2008.csv',
           'Environmental Science Contributors 2008',
           'env_science_contribs_2008');
   drawPie('/usdocs_registry/assets/tenth_anniversary/env_science_contribs_2018.csv',
           'Environmental Science Contributors 2018',
-          'env_science_contribs_2018');
+          'env_science_contribs_2018');*/
   /* Agriculture */
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/agriculture_over_time.csv',
                 'Items Classified as Agriculture',
                 'agriculture_growth',
                 'All',
                 'Agriculture is defined as LC call numbers within S, SB, SD, SF, and SH.');
-  drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2008.csv',
+/*  drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2008.csv',
           'Agriculture Contributors 2008',
           'ag_contribs_2008');
   drawPie('/usdocs_registry/assets/tenth_anniversary/ag_contribs_2018.csv',
           'Agriculture Contributors 2018',
-          'ag_contribs_2018');
+          'ag_contribs_2018');*/
   /* Classics */
   drawAreaChart('/usdocs_registry/assets/tenth_anniversary/classics_over_time.csv',
                 'Items Classified as Classics',
                 'classics_growth',
                 'All',
                 'Classics is defined as LC call numbers within DE, DF, DG, PA.');
-  drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2008.csv',
+/*  drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2008.csv',
           'Classics Contributors 2008',
           'classics_2008');
   drawPie('/usdocs_registry/assets/tenth_anniversary/classics_contribs_2018.csv',
           'Classics Contributors 2018',
-          'classics_2018');
+          'classics_2018');*/
   });
 
 
@@ -116,8 +146,7 @@ function drawPie(source_data, title, divid){
     }
 }
 
- 
-function drawColumnChart(title, source_data, divid, gridlines, height, orientation){
+function drawStackedChart(title, source_data, divid, gridlines, height, orientation, groupwidth ){
     google.charts.load("current", {packages:["corechart"]});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
@@ -140,7 +169,44 @@ function drawColumnChart(title, source_data, divid, gridlines, height, orientati
           height: height,
           /* chartArea: {left: 100}, */
           
-          bar: {groupWidth: "100%"},
+          bar: {groupWidth: groupwidth},
+          legend: { position: "none" },
+          isStacked: true,
+          bars: orientation,
+          vAxis: { title: '', format: '', textPosition: 'none' },
+          hAxis: { gridlines: {count: 2}, title: '', format: '0' }
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById(divid));
+        chart.draw(data, options);
+      })
+    }
+}
+
+ 
+function drawColumnChart(title, source_data, divid, gridlines, height, orientation, groupwidth){
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      jq.get(source_data, function(csvString) {
+        /*google.charts.load('current', {'packages':['corechart', 'area']});*/
+        var arrayData = jq.csv.toArrays(csvString, {onParseValue: jq.csv.hooks.castToScalar});
+        var header = arrayData[0]
+        var formatter = new google.visualization.NumberFormat({pattern: '0'});
+        var data = new google.visualization.arrayToDataTable(arrayData);
+        header[0] = {label: 'Year', id: 'year', format: '0'}
+        data[0] = header
+        formatter.format(data, 0);      
+        var options = {
+          title: title,
+          titleTextStyle: {
+            fontSize: 18
+          },
+          tooltip: {isHtml: true},
+          width: "80%",
+          height: height,
+          /* chartArea: {left: 100}, */
+          
+          bar: {groupWidth: groupwidth},
           legend: { position: "none" },
           isStacked: 'percent',
           bars: orientation,
