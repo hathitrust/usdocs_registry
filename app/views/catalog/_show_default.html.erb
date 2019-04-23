@@ -6,7 +6,7 @@
       <tr valign="top">
         <th class="blacklight-<%= field_name.parameterize %>" scope="row"><%= render_document_show_field_label document, field: field_name %></th>
         <td class="blacklight-<%= field_name.parameterize %>">
-          <% if field_name == 'oclcnum_t' %>
+          <% if field_name == 'oclc' %>
             <% document[field_name].each do |onum| %>
               <%= link_to onum, "https://www.worldcat.org/oclc/#{onum}", target:"_blank" %>
             <% end %>
@@ -22,7 +22,7 @@
             <% document[field_name].uniq.each do |ht_id| %>
               <div class="fulltext"><%= link_to "HathiTrust Limited View", "http://catalog.hathitrust.org/Record/#{ht_id}" %></div>
             <% end %>
-          <% elsif field_name == 'author_display' || field_name == 'publisher_t' %>
+          <% elsif field_name == 'author' || field_name == 'publisher_all' %>
             <%= link_to document[field_name][0].sub(/[;,:]$/, ''), search_action_url(q: document[field_name][0], search_field: field_name.split('_')[0]) %>
 	  <% else %>
             <%= render_document_show_field_value( document, field: field_name) %>
@@ -35,8 +35,8 @@
   <% if oclcnum_links(document).last %>
     <% oclcnum_links(document).last do | oclcnum, url | %>
       <tr valign="top">
-        <th class="blacklight-oclcnum_t" scope="row">OCLC #</th>
-        <td class="blacklight-oclcnum_t"><%= link_to oclcnum, url, target:"_blank" %></td>
+        <th class="blacklight-oclc" scope="row">OCLC #</th>
+        <td class="blacklight-oclc"><%= link_to oclcnum, url, target:"_blank" %></td>
       </tr>
     <% end %>
   <% end %> 

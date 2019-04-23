@@ -3,11 +3,11 @@
   <h3 class="title">
     <span class="title">
       <%= render_index_field_value document, document_show_link_field(document) %>
-     <% if document['subtitle_display'] -%>
-      : <%= render_index_field_value document, field: 'subtitle_display' %>
+     <% if document['subtitle'] -%>
+      : <%= render_index_field_value document, field: 'subtitle' %>
      <% end %>
     </span>
-    <span class="enum_chron"><%= render_index_field_value document, field: 'enumchron_display' %></span>
+    <span class="enum_chron"><%= render_index_field_value document, field: 'enum_chron' %></span>
   </h3>
 
 </div>

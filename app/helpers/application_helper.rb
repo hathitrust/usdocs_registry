@@ -22,14 +22,14 @@ module ApplicationHelper
     return resources
   end       
 
-  #generate links from oclcnum_t field
+  #generate links from oclc field
   #only one (last) will likely be used
   def oclcnum_links document
     oclcnum_links = []
     base = 'https://www.worldcat.org/oclc/'
-    if document['oclcnum_t']
-      document['oclcnum_t'].each do | oclcnum_t |
-        oclcnum_links << [oclcnum_t, base+oclcnum_t.to_s]
+    if document['oclc']
+      document['oclc'].each do | oclc |
+        oclcnum_links << [oclc, base+oclc.to_s]
       end
     end
     return oclcnum_links

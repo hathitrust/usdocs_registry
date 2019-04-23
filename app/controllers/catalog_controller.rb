@@ -28,7 +28,7 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_display'
+    config.index.title_field = 'title_normalized'
     config.index.display_type_field = 'format'
 
     # solr field configuration for document/show views
@@ -88,7 +88,7 @@ class CatalogController < ApplicationController
       :dec_2010s => { :label => "2010 - #{Time.now.year}", :fq => "pub_date:[2010 TO *]" }
     }, :limit => 50
     config.add_facet_field 'pub_date', :label => 'Publication Year', :single => true, :limit => 12, sort: 'index' 
-    config.add_facet_field 'author_display', :label => 'Author', :limit => 50
+    config.add_facet_field 'author', :label => 'Author', :limit => 50
     config.add_facet_field 'subject_topic_facet', :label => 'Subject', :limit => 50 
     config.add_facet_field 'sudoc_stem_facet', :label => 'SuDoc Stem', :limit => 70 
     #config.add_facet_field 'series', :label => 'Series', :limit => 10 
@@ -115,44 +115,47 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
-    config.add_index_field 'title_display', :label => 'Title'
-    config.add_index_field 'subtitle_display', :label => 'Subtitle'
+    config.add_index_field 'title_normalized', :label => 'Title'
+    config.add_index_field 'subtitle', :label => 'Subtitle'
     #config.add_index_field 'title_vern_display', :label => 'Title'
-    config.add_index_field 'author_display', :label => 'by'
+    config.add_index_field 'author', :label => 'by'
+    config.add_index_field 'author_additional', :label => ''
+    config.add_index_field 'author_sort', :label => ''
     config.add_index_field 'author_vern_display', :label => ''
-    config.add_index_field 'enumchron_display', :label => ''
+    config.add_index_field 'enum_chron', :label => ''
     #config.add_index_field 'format', :label => 'Format'
     #config.add_index_field 'language_facet', :label => 'Language'
     config.add_index_field 'pub_date', :label => 'Published'
-    config.add_index_field 'oclcnum_t', :label => 'oclcnum_t'
+    config.add_index_field 'oclc', :label => 'oclc'
     config.add_index_field 'ht_ids', :label => 'Viewable'
     #config.add_index_field 'published_vern_display', :label => 'Published'
     #config.add_index_field 'lc_callnum_display', :label => 'Call number'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
-    config.add_show_field 'title_display', :label => 'Title'
+    config.add_show_field 'title_normalized', :label => 'Title'
     config.add_show_field 'title_vern_display', :label => 'Title'
-    config.add_show_field 'subtitle_display', :label => 'Subtitle'
+    config.add_show_field 'subtitle', :label => 'Subtitle'
     config.add_show_field 'subtitle_vern_display', :label => 'Subtitle'
-    config.add_show_field 'title_addl_t', :label => 'Additional Title Notes'
-    config.add_show_field 'author_display', :label => 'Author'
+    config.add_show_field 'title_additional', :label => 'Additional Title Notes'
+    config.add_show_field 'author', :label => 'Author'
+    config.add_show_field 'author_additional', :label => 'Author'
     config.add_show_field 'author_vern_display', :label => 'Author'
     config.add_show_field 'format', :label => 'Format'
     config.add_show_field 'url_fulltext_display', :label => 'URL'
     config.add_show_field 'url_suppl_display', :label => 'More Information'
     config.add_show_field 'language_facet', :label => 'Language'
-    config.add_show_field 'publisher_t', :label => 'Publisher'
-    config.add_show_field 'published_display', :label => 'Published'
+    config.add_show_field 'publisher_all', :label => 'Publisher'
+    config.add_show_field 'place_of_publication', :label => 'Published'
     config.add_show_field 'pub_date', :label => 'Published'
     config.add_show_field 'published_vern_display', :label => 'Published'
-    config.add_show_field 'sudoc_display', :label => 'SuDoc Call Number'
-    config.add_show_field 'lc_callnum_display', :label => 'LC Call Number'
-    config.add_show_field 'isbn_t', :label => 'ISBN'
-    config.add_show_field 'oclcnum_t', :label => 'OCLC #'
-    config.add_show_field 'material_type_display', :label => 'Physical Description'
-    config.add_show_field 'enumchron_display', :label => 'Enumeration/Chronology'
-    config.add_show_field 'title_series_t', :label => 'Series Title' 
+    config.add_show_field 'sudocs', :label => 'SuDoc Call Number'
+    config.add_show_field 'lc_call_numbers', :label => 'LC Call Number'
+    config.add_show_field 'isbn', :label => 'ISBN'
+    config.add_show_field 'oclc', :label => 'OCLC #'
+    config.add_show_field 'material_type', :label => 'Physical Description'
+    config.add_show_field 'enum_chron', :label => 'Enumeration/Chronology'
+    config.add_show_field 'title_series', :label => 'Series Title' 
     config.add_show_field 'ht_ids_fv', :label => 'Viewable'
     config.add_show_field 'ht_ids_lv', :label => 'Viewable'
     config.add_show_field 'relationships', :label => 'Related Items'
@@ -184,7 +187,7 @@ class CatalogController < ApplicationController
     
     config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params. 
-      field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
+      # field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
 
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
@@ -197,14 +200,13 @@ class CatalogController < ApplicationController
     end
     
     config.add_search_field('author') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
       field.solr_local_parameters = { 
         :qf => '$author_qf',
         :pf => '$author_pf'
       }
     end
 
-    config.add_search_field('sudoc', :label => 'SuDoc #' ) do |field|
+    config.add_search_field('sudocs', :label => 'SuDoc #' ) do |field|
       field.solr_local_parameters = {
         :qf => '$sudoc_qf',
         :pf => '$sudoc_pf'
@@ -222,10 +224,10 @@ class CatalogController < ApplicationController
     #  }
     #end
 
-    config.add_search_field( 'oclcnum', :label => 'OCLC #') do |field|
+    config.add_search_field( 'oclc', :label => 'OCLC #') do |field|
       field.solr_local_parameters = {
-        :qf => '$oclcnum_qf',
-        :pf => '$oclcnum_pf'
+        :qf => '$oclc_qf',
+        :pf => '$oclc_pf'
       }
     end
 
@@ -246,7 +248,7 @@ class CatalogController < ApplicationController
     config.add_sort_field 'pub_date_sort asc, title_sort asc', :label => 'year ascending'
     config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
     config.add_sort_field 'title_sort asc, pub_date_sort desc', :label => 'title'
-    config.add_sort_field 'enumchron_display desc', :label => 'enumeration / chronology'
+    config.add_sort_field 'enum_chron desc', :label => 'enumeration / chronology'
 
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
