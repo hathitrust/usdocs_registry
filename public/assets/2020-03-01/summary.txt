@@ -1,0 +1,5 @@
+{"m"=>519641, "s"=>33883, "i"=>63, "d"=>176, "a"=>238, "b"=>7, "c"=>63}
+# of Bibliographic Records: 554071
+519641 monograph records. 33883 serial records.
+# of unique items represented in the Registry: 1173718
+# of digital objects (974): 1388579
