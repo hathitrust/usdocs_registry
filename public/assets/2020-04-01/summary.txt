@@ -2,4 +2,4 @@
 # of Bibliographic Records: 558051
 523112 monograph records. 34393 serial records.
 # of unique items represented in the Registry: 1183780
-# of digital objects (974): 1400306
+# of digital objects (974): 1356242
