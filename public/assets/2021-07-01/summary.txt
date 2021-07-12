@@ -1,0 +1,5 @@
+{"m"=>4914, "s"=>1380, "i"=>1, "d"=>10}
+# of Bibliographic Records: 6305
+4914 monograph records. 1380 serial records.
+# of unique items represented in the Registry: 55700
+# of digital objects (974): 67112
