@@ -36,28 +36,4 @@ $(document).ready(function(){
     });
   });
 
-  /* handling the feedback form. 
-     Very similar to modals, but easier to handle separately. */ 
-  $('#feedback_submit').click( function(e) {
-    e.preventDefault();
-    /* do this first, so they don't keep hitting the submit button */
-    $('#feedback_submit').hide();
-    $('#feedback-success').html('Sending...');
-    $.ajax({
-      type: "POST",
-      url: 'https://www.hathitrust.org/usdocs_registry/feedback', /* todo: use the root_url instead */
-      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-      data: {
-        current_url: window.location.href, 
-        comments: $('#comments').val(), 
-        email: $('#email').val()
-      },
-      success: function() {
-        $('#comments').val('');
-        $('#feedback-success').html('Your feedback has been received. Thank you.');
-        $('#feedback_submit').show();
-      }
-    });
-  });
-  
 });
