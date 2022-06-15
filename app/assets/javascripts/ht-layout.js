@@ -47,13 +47,6 @@ function pausecomp(millis)
   while(curDate-date < millis);
 }
 
-function submitFeedback()
-{
-  document.getElementById('popupbox').innerHTML +=  document.getElementById('feedback_thanks').innerHTML;
-  setTimeout("hideLightbox()", 1500);
-  return true;
-}
-
 function hideMenu(elemId)
 {
     document.getElementById(elemId).style.display='none';

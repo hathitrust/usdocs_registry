@@ -1630,11 +1630,6 @@ ul.filters li em {
   margin-top: 2em;
 }
 
-/* line 1369, ../sass/hathi.scss */
-#feedback_form_wrapper td {
-  vertical-align: top;
-}
-
 /* line 1373, ../sass/hathi.scss */
 .AccessLink, #accessLinks {
   padding: 8px 0 8px 12px;

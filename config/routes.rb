@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
-  post 'feedback' => 'application#feedback'
-
   get 'about' => 'pages#about'
 
   get 'stat_overview' => 'pages#stat_overview'
