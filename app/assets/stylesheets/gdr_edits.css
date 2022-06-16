@@ -45,6 +45,10 @@ ul.pagination, ul.pagination li  { display:inline; list-style-type:none; }
 
 .panel {  padding-top: 1em; }
 
+.feedback_block { margin-left: 2em; }
+
+.feedback-form { border-top: 1px solid #e1dfdf; margin-top: 3em; }
+
 #ht_id_listing { list-style: none; }
 
 
