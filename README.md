@@ -1,6 +1,6 @@
 # United States Government Documents Registry (alpha)
 
-A Blacklight powered interface for the government documents index. This repository is unlikely to be useful outside of HathiTrust. 
+A Blacklight powered interface for the Government Documents index. This repository is unlikely to be useful outside of HathiTrust. 
 
 ## Installation
 
