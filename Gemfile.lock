@@ -113,7 +113,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     hashie (5.0.0)
     http (5.1.0)
@@ -179,7 +179,7 @@ GEM
     mini_racer (0.4.0)
       libv8-node (~> 15.14.0.0)
     minitar (0.9)
-    minitest (5.16.3)
+    minitest (5.17.0)
     multipart-post (2.2.3)
     mysql2 (0.5.4)
     nio4r (2.5.8)
