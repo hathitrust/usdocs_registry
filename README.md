@@ -5,7 +5,9 @@ A Blacklight powered interface for the Government Documents index. This reposito
 ## Installation
 
 `git clone` then `bundle install`.
+
 Make sure the subdirectories `tmp/` and `log/` exist.
-Then start the service using magic that is not under version control.
 
 Edit the sample config files with appropriate authentication information. 
+
+Then start the service using magic that is not under version control.
