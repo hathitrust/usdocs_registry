@@ -4,7 +4,7 @@ A Blacklight powered interface for the Government Documents index. This reposito
 
 ## Installation
 
-`git clone` then `bundle install`.
+`git clone` then `bundle install --path .bundle`.
 
 Make sure the subdirectories `tmp/` and `log/` exist.
 
